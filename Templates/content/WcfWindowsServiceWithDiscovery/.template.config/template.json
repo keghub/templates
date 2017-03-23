@@ -1,0 +1,22 @@
+{
+    "author": "EMG",
+    "classifications":[
+        "EMG", "WCF", "Discovery", "Windows Service"
+    ],
+    "name": "[EMG] WCF Windows Service with Discovery",
+    "identity": "EMG.Templates.WcfWindowsServiceWithDiscovery",
+    "groupIdentity": "EMG.Templates.WcfWindowsService",
+    "shortName": "wcf-service-discovery",
+    "tags":{
+        "language":"C#",
+        "type": "project"
+    },
+    "sourceName": "WcfWindowsServiceWithDiscovery",
+    "guids":[],
+    "preferNameDirectory": true,
+    "primaryOutputs": [
+        {
+            "path": "WcfWindowsServiceWithDiscovery.csproj"
+        }
+    ]
+}

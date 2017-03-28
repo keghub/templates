@@ -9,12 +9,11 @@ using Nybus.Logging;
 using Topshelf;
 using Topshelf.CastleWindsor;
 
-
-namespace EMG
+namespace EMG.WcfWindowsServiceWithDiscovery
 {
     class Program
     {
-        private static readonly string ServiceName = "EMG.Service";
+        private static readonly string ServiceName = "EMG.WcfWindowsServiceWithDiscovery";
 
         static void Main(string[] args)
         {
@@ -27,7 +26,7 @@ namespace EMG
                 {
                     configuration.UseWindsorContainer(container);
 
-                    configuration.Service<WcfServiceHost<EchoService>>(svc =>
+                    configuration.Service<WcfServiceHost<WcfWindowsServiceWithDiscovery>>(svc =>
                     {
                         svc.BeforeStartingService(sc => sc.RequestAdditionalTime(TimeSpan.FromMinutes(1)));
                         svc.BeforeStoppingService(sc => sc.RequestAdditionalTime(TimeSpan.FromMinutes(1)));
@@ -48,9 +47,11 @@ namespace EMG
                         });
                     });
 
-                    configuration.SetDisplayName("EMG Service");
+                    configuration.SetDisplayName("EMG WcfWindowsServiceWithDiscovery");
                     configuration.SetServiceName(ServiceName);
-                    configuration.SetDescription("A service for EMG");
+
+                    // Set a more descriptive text about the service
+                    //configuration.SetDescription("A service for EMG");
 
                     configuration.EnableServiceRecovery(rc => rc.RestartService(1).RestartService(5).RestartService(10).SetResetPeriod(1));
 
@@ -82,7 +83,7 @@ namespace EMG
 
             container.AddFacility<WcfFacility>();
 
-            container.Install(new WcfInstaller<EchoService>());
+            container.Install(new WcfInstaller<WcfWindowsServiceWithDiscovery>());
 
             return container;
         }

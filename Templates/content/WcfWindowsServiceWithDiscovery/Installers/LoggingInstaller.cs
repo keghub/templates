@@ -6,7 +6,7 @@ using NLog;
 using Nybus.Logging;
 using ILogger = Nybus.Logging.ILogger;
 
-namespace EMG.Installers
+namespace EMG.WcfWindowsServiceWithDiscovery.Installers
 {
     public class LoggingInstaller : IWindsorInstaller
     {

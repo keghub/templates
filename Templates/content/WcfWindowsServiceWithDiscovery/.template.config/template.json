@@ -4,8 +4,8 @@
         "EMG", "WCF", "Discovery", "Windows Service"
     ],
     "name": "[EMG] WCF Windows Service with Discovery",
-    "identity": "EMG.Templates.WcfWindowsServiceWithDiscovery",
-    "groupIdentity": "EMG.Templates.WcfWindowsService",
+    "identity": "EMG.Templates.WcfWindowsService.Discovery",
+    "groupIdentity": "EMG.Templates.WcfWindowsService.Discovery.CSharp",
     "shortName": "wcf-service-discovery",
     "tags":{
         "language":"C#",
@@ -16,7 +16,7 @@
     "preferNameDirectory": true,
     "primaryOutputs": [
         {
-            "path": "WcfWindowsServiceWithDiscovery.csproj"
+            "path": "./WcfWindowsServiceWithDiscovery.csproj"
         }
     ]
 }

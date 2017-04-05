@@ -2,18 +2,18 @@ using System;
 using System.Threading.Tasks;
 using Nybus.Logging;
 
-namespace EMG.WcfWindowsServiceWithDiscovery
+namespace EMG.WcfWindowsService
 {
 
     /*
         The concrete implementation of your service.
         It can implement more than one service contract.
     */
-    public class WcfWindowsServiceWithDiscovery : IWcfWindowsServiceWithDiscovery
+    public class WcfWindowsService : IWcfWindowsService
     {
         private readonly ILogger _logger;
 
-        public WcfWindowsServiceWithDiscovery(ILogger logger)
+        public WcfWindowsService(ILogger logger)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }

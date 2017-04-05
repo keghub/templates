@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WcfWindowsServiceWithDiscovery", "Templates\content\WcfWindowsServiceWithDiscovery\WcfWindowsServiceWithDiscovery.csproj", "{A7820866-7972-4A63-BDDA-9BFB903797E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WcfWindowsService", "Templates\content\WcfWindowsService\WcfWindowsService.csproj", "{A7820866-7972-4A63-BDDA-9BFB903797E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{F49BC940-A1EC-41EE-ACAB-E3DB02A58EC4}"
 EndProject

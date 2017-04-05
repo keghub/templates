@@ -2,7 +2,7 @@
 using EMG.Wcf;
 using EMG.Wcf.Extensions;
 
-namespace EMG.WcfWindowsServiceWithDiscovery
+namespace EMG.WcfWindowsService
 {
     /*
     This class is used to configure the service.
@@ -17,35 +17,35 @@ namespace EMG.WcfWindowsServiceWithDiscovery
     * Each binding can be customized through a Action<TBinding>
     * Default binding setting: all timeouts are set to 70 seconds, file size and object graph restrictions are set to Int32.MaxValue, SecurityMode: None.
     */
-    public class WcfWindowsServiceWithDiscoveryServiceHostConfigurator : IServiceHostConfigurator<WcfWindowsServiceWithDiscovery>
+    public class WcfWindowsServiceServiceHostConfigurator : IServiceHostConfigurator<WcfWindowsService>
     {
         private readonly WcfHostingOptions _options;
 
-        public WcfWindowsServiceWithDiscoveryServiceHostConfigurator(WcfHostingOptions options)
+        public WcfWindowsServiceServiceHostConfigurator(WcfHostingOptions options)
         {
             _options = options ?? throw new ArgumentNullException(nameof(options));
         }
 
-        public void Configure(IServiceHost<WcfWindowsServiceWithDiscovery> host)
+        public void Configure(IServiceHost<WcfWindowsService> host)
         {
             /*
                 You can customize WcfHostingOptions to receive more settings.
             */
 
             /* Adds a BasicHttp endpoint on port 9999 with suffix: "basic". Uses default configuration. */
-            //host.AddBasicHttpEndpoint(typeof(IWcfWindowsServiceWithDiscovery), 9999, hostname: _options.AnnouncedHost, configureBinding: binding => binding.UseDefaults());
+            //host.AddBasicHttpEndpoint(typeof(IWcfWindowsService), 9999, hostname: _options.AnnouncedHost, configureBinding: binding => binding.UseDefaults());
 
             /* Adds a WSHttp endpoint on port 9999 with suffix: "ws". Uses default configuration. */
-            //host.AddWSHttpEndpoint(typeof(IWcfWindowsServiceWithDiscovery), 9999, hostname: _options.AnnouncedHost, configureBinding: binding => binding.UseDefaults());
+            //host.AddWSHttpEndpoint(typeof(IWcfWindowsService), 9999, hostname: _options.AnnouncedHost, configureBinding: binding => binding.UseDefaults());
 
             /* Adds a WebHttp endpoint on port 9999 with suffix: "web". Uses default configuration. */
-            //host.AddWebHttpEndpoint(typeof(IWcfWindowsServiceWithDiscovery), 9999, hostname: _options.AnnouncedHost, configureBinding: binding => binding.UseDefaults());
+            //host.AddWebHttpEndpoint(typeof(IWcfWindowsService), 9999, hostname: _options.AnnouncedHost, configureBinding: binding => binding.UseDefaults());
 
             /* Adds a NamedPipe endpoint with suffix: "echo". Uses default configuration. */
-            //host.AddNamedPipeEndpoint(typeof(IWcfWindowsServiceWithDiscovery), "echo", configureBinding: binding => binding.UseDefaults());
+            //host.AddNamedPipeEndpoint(typeof(IWcfWindowsService), "echo", configureBinding: binding => binding.UseDefaults());
 
             /* Adds a NetTcp endpoint on port 9998. Uses default configuration. */
-            host.AddNetTcpEndpoint(typeof(IWcfWindowsServiceWithDiscovery), 9998, hostname: _options.AnnouncedHostName, configureBinding: binding => binding.UseDefaults());
+            host.AddNetTcpEndpoint(typeof(IWcfWindowsService), 9998, hostname: _options.AnnouncedHostName, configureBinding: binding => binding.UseDefaults());
 
             /* Adds service metadata on the same port of the first HTTP endpoint, otherwise the port must be provided */
             

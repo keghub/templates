@@ -1,17 +1,14 @@
-using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using EMG.Common;
 using EMG.Wcf.Installers;
-using Loggly;
 using Loggly.Config;
-using Microsoft.Extensions.Configuration;
 using NLog;
 using Nybus.Logging;
 using ILogger = Nybus.Logging.ILogger;
 
-namespace EMG.WcfWindowsServiceWithDiscovery.Installers
+namespace EMG.WcfWindowsService.Installers
 {
     public class LoggingInstaller : IWindsorInstaller
     {

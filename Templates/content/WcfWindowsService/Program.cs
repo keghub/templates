@@ -6,18 +6,18 @@ using Castle.Windsor.Installer;
 using EMG.Common;
 using EMG.Wcf;
 using EMG.Wcf.Installers;
-using EMG.WcfWindowsServiceWithDiscovery.Installers;
+using EMG.WcfWindowsService.Installers;
 using Loggly.Config;
 using Microsoft.Extensions.Configuration;
 using Nybus.Logging;
 using Topshelf;
 using Topshelf.CastleWindsor;
 
-namespace EMG.WcfWindowsServiceWithDiscovery
+namespace EMG.WcfWindowsService
 {
     class Program
     {
-        public static readonly string ServiceName = "EMG.WcfWindowsServiceWithDiscovery";
+        public static readonly string ServiceName = "EMG.WcfWindowsService";
 
         static void Main(string[] args)
         {
@@ -32,7 +32,7 @@ namespace EMG.WcfWindowsServiceWithDiscovery
                 {
                     cfg.UseWindsorContainer(container);
 
-                    cfg.Service<WcfServiceHost<WcfWindowsServiceWithDiscovery>>(svc =>
+                    cfg.Service<WcfServiceHost<WcfWindowsService>>(svc =>
                     {
                         svc.BeforeStartingService(sc => sc.RequestAdditionalTime(TimeSpan.FromMinutes(1)));
                         svc.BeforeStoppingService(sc => sc.RequestAdditionalTime(TimeSpan.FromMinutes(1)));
@@ -53,7 +53,7 @@ namespace EMG.WcfWindowsServiceWithDiscovery
                         });
                     });
 
-                    cfg.SetDisplayName("EMG WcfWindowsServiceWithDiscovery");
+                    cfg.SetDisplayName("EMG WcfWindowsService");
                     cfg.SetServiceName(ServiceName);
 
                     // Set a more descriptive text about the service
@@ -96,7 +96,7 @@ namespace EMG.WcfWindowsServiceWithDiscovery
 
             container.AddFacility<WcfFacility>();
 
-            container.Install(new WcfInstaller<WcfWindowsServiceWithDiscovery>());
+            container.Install(new WcfInstaller<WcfWindowsService>());
 
             return container;
         }

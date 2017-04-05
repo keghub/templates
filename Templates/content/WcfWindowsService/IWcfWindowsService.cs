@@ -1,7 +1,7 @@
 ﻿using System.ServiceModel;
 using System.Threading.Tasks;
 
-namespace EMG.WcfWindowsServiceWithDiscovery
+namespace EMG.WcfWindowsService
 {
     /* 
         The contract to expose.
@@ -10,7 +10,7 @@ namespace EMG.WcfWindowsServiceWithDiscovery
         Asynchronous methods in the interface is suggested.
     */
     [ServiceContract]
-    public interface IWcfWindowsServiceWithDiscovery
+    public interface IWcfWindowsService
     {
 
         [OperationContract]

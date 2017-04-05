@@ -1,6 +1,7 @@
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using EMG.Common;
 using EMG.Wcf.Installers;
 
 namespace EMG.WcfWindowsServiceWithDiscovery.Installers
@@ -16,6 +17,8 @@ namespace EMG.WcfWindowsServiceWithDiscovery.Installers
 
             container.Register(Component.For<IServiceHostConfigurator<WcfWindowsServiceWithDiscovery>, WcfWindowsServiceWithDiscoveryServiceHostConfigurator>());
             */
+
+            container.Register(Component.For<WcfHostingOptions>().FromConfiguration(c => c.GetSection("WCF")));
         }
     }
     

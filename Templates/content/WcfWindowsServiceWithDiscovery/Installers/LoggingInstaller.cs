@@ -1,7 +1,12 @@
+using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using EMG.Common;
 using EMG.Wcf.Installers;
+using Loggly;
+using Loggly.Config;
+using Microsoft.Extensions.Configuration;
 using NLog;
 using Nybus.Logging;
 using ILogger = Nybus.Logging.ILogger;
@@ -15,6 +20,8 @@ namespace EMG.WcfWindowsServiceWithDiscovery.Installers
             container.Register(Component.For<ILoggerFactory>().ImplementedBy<LoggerFactory>().OnCreate(ConfigureLoggerFactory).LifeStyle.Singleton);
 
             container.Register(Component.For<ILogger>().CreateLoggerForTargetClass());
+
+            container.Register(Component.For<LogglyOptions>().FromConfiguration(r => r.GetSection("Loggly")));
         }
 
         private void ConfigureLoggerFactory(ILoggerFactory loggerFactory)
@@ -23,5 +30,16 @@ namespace EMG.WcfWindowsServiceWithDiscovery.Installers
             loggerFactory.AddProvider(new NLogLoggerProvider(logFactory));
         }
 
+    }
+
+    public class LogglyOptions
+    {
+        public string EndpointHostname { get; set; } = "logs-01.loggly.com";
+
+        public int EndpointPort { get; set; } = 443;
+
+        public LogTransport LogTransport { get; set; } = LogTransport.Https;
+
+        public string CustomerToken { get; set; }
     }
 }

@@ -12,12 +12,12 @@ namespace EMG.WcfWindowsServiceWithDiscovery
     [ServiceContract]
     public interface IWcfWindowsServiceWithDiscovery
     {
-        /*
+
         [OperationContract]
         string Echo(string message);
 
         [OperationContract]
         Task<string> UpperCaseAsync(string message);
-        */
+
     }
 }

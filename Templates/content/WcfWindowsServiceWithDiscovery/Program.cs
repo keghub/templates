@@ -3,8 +3,12 @@ using Castle.Facilities.WcfIntegration;
 using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
+using EMG.Common;
 using EMG.Wcf;
 using EMG.Wcf.Installers;
+using EMG.WcfWindowsServiceWithDiscovery.Installers;
+using Loggly.Config;
+using Microsoft.Extensions.Configuration;
 using Nybus.Logging;
 using Topshelf;
 using Topshelf.CastleWindsor;
@@ -13,20 +17,22 @@ namespace EMG.WcfWindowsServiceWithDiscovery
 {
     class Program
     {
-        private static readonly string ServiceName = "EMG.WcfWindowsServiceWithDiscovery";
+        public static readonly string ServiceName = "EMG.WcfWindowsServiceWithDiscovery";
 
         static void Main(string[] args)
         {
             using (var container = CreateContainer())
             {
+                SetUpLoggly(container);
+
                 var loggerFactory = container.Resolve<ILoggerFactory>();
                 var logger = loggerFactory.CreateCurrentClassLogger();
 
-                var service = HostFactory.New(configuration =>
+                var service = HostFactory.New(cfg =>
                 {
-                    configuration.UseWindsorContainer(container);
+                    cfg.UseWindsorContainer(container);
 
-                    configuration.Service<WcfServiceHost<WcfWindowsServiceWithDiscovery>>(svc =>
+                    cfg.Service<WcfServiceHost<WcfWindowsServiceWithDiscovery>>(svc =>
                     {
                         svc.BeforeStartingService(sc => sc.RequestAdditionalTime(TimeSpan.FromMinutes(1)));
                         svc.BeforeStoppingService(sc => sc.RequestAdditionalTime(TimeSpan.FromMinutes(1)));
@@ -47,17 +53,17 @@ namespace EMG.WcfWindowsServiceWithDiscovery
                         });
                     });
 
-                    configuration.SetDisplayName("EMG WcfWindowsServiceWithDiscovery");
-                    configuration.SetServiceName(ServiceName);
+                    cfg.SetDisplayName("EMG WcfWindowsServiceWithDiscovery");
+                    cfg.SetServiceName(ServiceName);
 
                     // Set a more descriptive text about the service
                     //configuration.SetDescription("A service for EMG");
 
-                    configuration.EnableServiceRecovery(rc => rc.RestartService(1).RestartService(5).RestartService(10).SetResetPeriod(1));
+                    cfg.EnableServiceRecovery(rc => rc.RestartService(1).RestartService(5).RestartService(10).SetResetPeriod(1));
 
-                    configuration.RunAsLocalSystem();
-                    configuration.StartAutomaticallyDelayed();
-                    configuration.SetStopTimeout(TimeSpan.FromMinutes(5));
+                    cfg.RunAsLocalSystem();
+                    cfg.StartAutomaticallyDelayed();
+                    cfg.SetStopTimeout(TimeSpan.FromMinutes(5));
                 });
 
                 try
@@ -77,6 +83,13 @@ namespace EMG.WcfWindowsServiceWithDiscovery
         {
             var container = new WindsorContainer();
 
+            container.AddConfiguration(
+                b => b.AddJsonFile("appsettings.json", true),
+                b => b.AddEnvironmentVariables()
+            );
+
+            // Check https://app.assembla.com/spaces/studentum/git-8/source/master/Configuration/CastleWindsor/README.md for usages
+
             container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel));
 
             container.Install(FromAssembly.InThisApplication());
@@ -86,6 +99,21 @@ namespace EMG.WcfWindowsServiceWithDiscovery
             container.Install(new WcfInstaller<WcfWindowsServiceWithDiscovery>());
 
             return container;
+        }
+
+        private static void SetUpLoggly(IWindsorContainer container)
+        {
+            var configuration = container.Resolve<IConfigurationRoot>();
+            var options = container.Resolve<LogglyOptions>();
+
+            var instance = LogglyConfig.Instance;
+            instance.ApplicationName = ServiceName;
+
+            instance.Transport.EndpointHostname = options.EndpointHostname;
+            instance.Transport.EndpointPort = options.EndpointPort;
+            instance.Transport.LogTransport = options.LogTransport;
+            instance.CustomerToken = options.CustomerToken;
+            instance.TagConfig.Tags.Add(configuration.GetValue<string>("Environment") ?? "Development");
         }
     }
 }

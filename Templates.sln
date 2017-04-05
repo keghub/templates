@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WcfWindowsService", "Templa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{F49BC940-A1EC-41EE-ACAB-E3DB02A58EC4}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WcfWindowsServiceWithNybus", "Templates\content\WcfWindowsServiceWithNybus\WcfWindowsServiceWithNybus.csproj", "{F7AD8BD2-1B14-4984-897B-1DF347397A85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,11 +19,16 @@ Global
 		{A7820866-7972-4A63-BDDA-9BFB903797E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7820866-7972-4A63-BDDA-9BFB903797E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7820866-7972-4A63-BDDA-9BFB903797E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7AD8BD2-1B14-4984-897B-1DF347397A85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7AD8BD2-1B14-4984-897B-1DF347397A85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7AD8BD2-1B14-4984-897B-1DF347397A85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7AD8BD2-1B14-4984-897B-1DF347397A85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A7820866-7972-4A63-BDDA-9BFB903797E8} = {F49BC940-A1EC-41EE-ACAB-E3DB02A58EC4}
+		{F7AD8BD2-1B14-4984-897B-1DF347397A85} = {F49BC940-A1EC-41EE-ACAB-E3DB02A58EC4}
 	EndGlobalSection
 EndGlobal

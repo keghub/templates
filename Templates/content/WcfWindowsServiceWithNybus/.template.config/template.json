@@ -1,0 +1,22 @@
+{
+    "author": "EMG",
+    "classifications":[
+        "EMG", "WCF", "Discovery", "Windows Service", "Nybus"
+    ],
+    "name": "[EMG] WCF Windows Service with Nybus",
+    "identity": "EMG.Templates.WcfWindowsService.Nybus",
+    "groupIdentity": "EMG.Templates.WcfWindowsService.Nybus.CSharp",
+    "shortName": "wcf-service-nybus",
+    "tags":{
+        "language":"C#",
+        "type": "project"
+    },
+    "sourceName": "WcfWindowsServiceWithNybus",
+    "guids":[],
+    "preferNameDirectory": true,
+    "primaryOutputs": [
+        {
+            "path": "./WcfWindowsServiceWithNybus.csproj"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "author": "EMG",
+    "classifications":[
+        "EMG", "Nybus", "Windows Service"
+    ],
+    "name": "[EMG] Nybus Windows Service",
+    "identity": "EMG.Templates.NybusWindowsService",
+    "groupIdentity": "EMG.Templates.NybusWindowsService.CSharp",
+    "shortName": "nybus-service",
+    "tags":{
+        "language":"C#",
+        "type": "project"
+    },
+    "sourceName": "NybusWindowsService",
+    "guids":[],
+    "preferNameDirectory": true,
+    "primaryOutputs": [
+        {
+            "path": "./NybusWindowsService.csproj"
+        }
+    ]
+}

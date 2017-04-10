@@ -8,12 +8,14 @@ using Nybus.Configuration;
 using Nybus.MassTransit;
 using Nybus.Utils;
 
-namespace EMG.WcfWindowsServiceWithNybus.Installers
+namespace EMG.NybusWindowsService.Installers
 {
     public class NybusInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
+            container.Register(Component.For<NybusService>());
+
             container.Register(Component.For<IBus>().UsingFactory((IBusBuilder builder) => builder.Build()).LifeStyle.Singleton);
 
             container.Register(Component.For<IBusBuilder>().ImplementedBy<NybusBusBuilder>().OnCreate(ConfigureSubscriptions).LifeStyle.Singleton);
@@ -50,6 +52,9 @@ namespace EMG.WcfWindowsServiceWithNybus.Installers
 
             /* This will subscribe the event `MessageReceived` to an instance of MessageReceivedHandler */
             //builder.SubscribeToEvent<MessageReceivedHandler, MessageReceived>();
+
+            /* This is to subscribe to commands */
+            // builder.SubscribeToCommand<SomeCommand>();
         }
 
         private void ConfigureMassTransit(MassTransitOptions options)

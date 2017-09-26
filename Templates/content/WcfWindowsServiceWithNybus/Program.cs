@@ -9,6 +9,8 @@ using Loggly.Config;
 using Microsoft.Extensions.Configuration;
 using Nybus.Logging;
 using System;
+using Castle.MicroKernel.Registration;
+using Nybus.Container;
 using Topshelf;
 using Topshelf.CastleWindsor;
 
@@ -92,6 +94,7 @@ namespace EMG.WcfWindowsServiceWithNybus
             container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel));
 
             container.Install(FromAssembly.InThisApplication());
+            container.Install(new DefaultHandlerInstaller(Classes.FromAssemblyInThisApplication()));
 
             container.AddFacility<WcfFacility>();
 

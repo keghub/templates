@@ -1,4 +1,5 @@
 ﻿using System;
+using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
@@ -6,6 +7,7 @@ using EMG.Common;
 using EMG.NybusWindowsService.Installers;
 using Loggly.Config;
 using Microsoft.Extensions.Configuration;
+using Nybus.Container;
 using Nybus.Logging;
 using Topshelf;
 using Topshelf.CastleWindsor;
@@ -89,6 +91,7 @@ namespace EMG.NybusWindowsService
             // Check https://app.assembla.com/spaces/studentum/git-8/source/master/Configuration/CastleWindsor/README.md for usages
 
             container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel));
+            container.Install(new DefaultHandlerInstaller(Classes.FromAssemblyInThisApplication()));
 
             container.Install(FromAssembly.InThisApplication());
 

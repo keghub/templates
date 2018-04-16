@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using EMG.Lambda.LocalRunner;
 
 namespace LambdaRunner
 {

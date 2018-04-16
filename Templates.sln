@@ -10,7 +10,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WcfWindowsServiceWithNybus"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NybusWindowsService", "Templates\content\NybusWindowsService\NybusWindowsService.csproj", "{4714FE51-5482-4858-ABCE-86DB8CF05AD5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LambdaRunner", "Templates\content\LambdaRunner\LambdaRunner.csproj", "{0E6DFC37-1EED-438A-A255-96CFDEA06200}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LambdaRunner", "Templates\content\LambdaLocalRunner\LambdaLocalRunner.csproj", "{0E6DFC37-1EED-438A-A255-96CFDEA06200}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

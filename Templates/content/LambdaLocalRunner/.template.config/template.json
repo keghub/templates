@@ -6,17 +6,17 @@
     "name": "[EMG] Lambda Local Runner",
     "identity": "EMG.Templates.LambdaLocalRunner",
     "groupIdentity": "EMG.Templates.LambdaLocalRunner.CSharp",
-    "shortName": "lambda-local",
+    "shortName": "lambda-local-runner",
     "tags":{
         "language":"C#",
         "type": "project"
     },
-    "sourceName": "LambdaRunner",
+    "sourceName": "LambdaLocalRunner",
     "guids":[],
     "preferNameDirectory": true,
     "primaryOutputs": [
         {
-            "path": "./LambdaRunner.csproj"
+            "path": "./LambdaLocalRunner.csproj"
         }
     ]
 }

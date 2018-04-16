@@ -2,19 +2,20 @@
 using System.Threading.Tasks;
 using EMG.Lambda.LocalRunner;
 
-namespace LambdaRunner
+namespace LambdaLocalRunner
 {
     class Program
     {
         static async Task Main(string[] args)
         {
             /* TODO */
-            // 1) Add a project reference to the project containing your Lambda function
-            // 2) Uncomment one of the templates below according to your needs
-            // 3) Customize it so that it builds (input type, output type)
-            // 4) Make sure you are using the correct serializer
-            // 5) Make sure the port is not conflicting with other applications. If needed, customize it
-
+            // - Add a project reference to the project containing your Lambda function
+            // - Uncomment one of the templates below according to your needs
+            // - Customize it so that it builds (input type, output type)
+            // - Make sure you are using the correct serializer
+            // - Make sure the port is not conflicting with other applications. If needed, customize it
+            // - Make sure the function is correctly recognized (you need to add a using statement)
+            
             /* Asynchronous function, accepting a string, returning a string, using default port (5000) and default serializer */
             // await LambdaRunner.Create()
             //                   .Receives<string>()

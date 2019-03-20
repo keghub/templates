@@ -15,7 +15,7 @@ namespace EMG.WcfWindowsServiceWithNybus.Installers
         {
             container.Register(Component.For<ILoggerFactory>().ImplementedBy<LoggerFactory>().OnCreate(ConfigureLoggerFactory).LifeStyle.Singleton);
 
-            container.Register(Component.For<ILogger>().CreateLoggerForTargetClass());
+            container.Register(Component.For<ILogger>().CreateLoggerForTargetClass().LifeStyle.Transient);
 
             container.Register(Component.For<LogglyOptions>().FromConfiguration(r => r.GetSection("Loggly")));
         }

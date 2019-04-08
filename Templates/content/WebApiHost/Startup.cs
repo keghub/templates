@@ -1,17 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿//#if (AddNybusBridge)
+using Amazon.SimpleNotificationService;
+using EMG.Common;
+//#endif
 using EMG.Extensions.AspNetCore;
+//#if (AddWcfDiscovery)
+using EMG.Wcf.Discovery;
+using EMG.Wcf.Discovery.Service;
+//#endif
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+//#if (AddNybus)
+using Nybus;
+//#endif
 
 namespace WebApiHost
 {
@@ -45,7 +49,41 @@ namespace WebApiHost
 
                     // If the delegate returns true, adds an authentication filter at global level that forbids anonymous requests
                     .RequireAuthentication(() => HostingEnvironment.IsProduction()); 
+//#if (AddNybus)
+            
+            // Configures Nybus to use RabbitMQ engine and fetch settings from the configuration values
+            services.AddNybus(nybus =>
+            {
+                nybus.UseConfiguration(Configuration);
+                
+                nybus.UseRabbitMqBusEngine(rabbitMq =>
+                {
+                    rabbitMq.UseConfiguration();
+                });
+            });
 
+            // Configures the NybusHostedService so that Nybus is started when the web application is started
+            services.AddHostedService<NybusHostedService>();
+//#endif
+//#if (AddWcfDiscovery)
+
+            // Configures the WCF Discovery from the current configuration
+            services.AddDiscovery(Configuration);
+            services.AddSingleton<IDiscoveryService, NetTcpDiscoveryService>();
+//#endif
+//#if (AddNybusBridge || ConfigureAWS)
+
+            // Configures AWS using the configuration values
+            services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
+//#endif
+//#if (AddNybusBridge)
+            
+            // Registers the SNS client
+            services.AddAWSService<IAmazonSimpleNotificationService>();
+
+            services.AddSingleton<INybusBridge, SnsNybusBridge>();
+//#endif
+            
             void ConfigureMvc(MvcOptions options)
             {
                 // Adds support for friendly error when an MVC action throws an uncaught exception

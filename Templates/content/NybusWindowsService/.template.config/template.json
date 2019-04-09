@@ -6,7 +6,7 @@
     "name": "[EMG] Nybus Windows Service",
     "identity": "EMG.Templates.NybusWindowsService",
     "groupIdentity": "EMG.Templates.NybusWindowsService.CSharp",
-    "shortName": "nybus-service",
+    "shortName": "emg-nybus-service",
     "tags":{
         "language":"C#",
         "type": "project"

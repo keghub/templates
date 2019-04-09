@@ -6,7 +6,7 @@
     "name": "[EMG] Lambda Local Runner",
     "identity": "EMG.Templates.LambdaLocalRunner",
     "groupIdentity": "EMG.Templates.LambdaLocalRunner.CSharp",
-    "shortName": "lambda-local-runner",
+    "shortName": "emg-lambda-local-runner",
     "tags":{
         "language":"C#",
         "type": "project"

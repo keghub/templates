@@ -6,7 +6,7 @@
     "name": "[EMG] WCF Windows Service with Nybus",
     "identity": "EMG.Templates.WcfWindowsService.Nybus",
     "groupIdentity": "EMG.Templates.WcfWindowsService.Nybus.CSharp",
-    "shortName": "wcf-service-nybus",
+    "shortName": "emg-wcf-service-nybus",
     "tags":{
         "language":"C#",
         "type": "project"

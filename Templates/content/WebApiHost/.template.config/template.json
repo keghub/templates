@@ -9,7 +9,7 @@
     "name": "[EMG] ASP.NET Core API",
     "identity": "EMG.Templates.AspNetCore.WebApi",
     "groupIdentity": "EMG.Templates.AspNetCore.WebApi.CSharp",
-    "shortName": "api-host",
+    "shortName": "emg-web-api",
     "tags": {
         "language": "C#",
         "type": "project"

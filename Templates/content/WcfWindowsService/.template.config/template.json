@@ -6,7 +6,7 @@
     "name": "[EMG] WCF Windows Service",
     "identity": "EMG.Templates.WcfWindowsService",
     "groupIdentity": "EMG.Templates.WcfWindowsService.CSharp",
-    "shortName": "wcf-service",
+    "shortName": "emg-wcf-service",
     "tags":{
         "language":"C#",
         "type": "project"

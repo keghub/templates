@@ -1,0 +1,62 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "EMG",
+    "classifications": [
+        "EMG",
+        "ASP.NET",
+        "API"
+    ],
+    "name": "[EMG] ASP.NET Core API",
+    "identity": "EMG.Templates.AspNetCore.WebApi",
+    "groupIdentity": "EMG.Templates.AspNetCore.WebApi.CSharp",
+    "shortName": "api-host",
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    },
+    "defaultName": "WebApiHost1",
+    "sourceName": "WebApiHost",
+    "guids": [],
+    "preferNameDirectory": true,
+    "primaryOutputs": [
+        { "path": "WebApiHost.csproj" }
+    ],
+    "symbols": {
+        "ConfigureAWS": {
+            "type": "parameter",
+            "datatype": "bool",
+            "defaultValue": "false",
+            "description": "If specified, adds the basic setup for AWS"
+        },
+        "AddNybus": {
+            "type": "parameter",
+            "datatype": "bool",
+            "defaultValue": "false",
+            "description": "If specified, adds support for Nybus v1"
+        },
+        "AddNybusBridge": {
+            "type": "parameter",
+            "datatype": "bool",
+            "defaultValue": "false",
+            "description": "If specified, adds supports for NybusBridge"
+        },
+        "AddWcfDiscovery": {
+            "type": "parameter",
+            "datatype": "bool",
+            "defaultValue": "false",
+            "description": "If specified, adds support for discovering services via WCF Discovery"
+        }
+    },
+    "postActions": [
+        {
+            "description": "Restore NuGet packages required by this project.",
+            "manualInstructions": [
+                {
+                    "text": "Run 'dotnet restore'"
+                }
+            ],
+            "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+            "continueOnError": true
+        }
+    ]
+}

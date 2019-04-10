@@ -1,0 +1,65 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "EMG",
+    "classifications": [
+        "EMG",
+        "Testing",
+        "ClassLib"
+    ],
+    "name": "[EMG] Test Project",
+    "identity": "EMG.Templates.Testing.ClassLib",
+    "groupIdentity": "EMG.Templates.Testing.ClassLib.CSharp",
+    "shortName": "emg-test-lib",
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    },
+    "defaultName": "UnitTest1",
+    "sourceName": "UnitTestProject",
+    "guids": [],
+    "preferNameDirectory": true,
+    "primaryOutputs": [
+        { "path": "UnitTestProject.csproj" }
+    ],
+    "symbols": {
+        "TargetFramework": {
+            "type": "parameter",
+            "datatype": "choice",
+            "defaultValue": "netcore",
+            "choices": [
+                {
+                    "choice": "netcore",
+                    "description": ".NET Core 2.2"
+                },
+                {
+                    "choice": "fx",
+                    "description": ".NET Framework 4.7.2"
+                },
+                {
+                    "choice": "both",
+                    "description": ".NET Core 2.2 and .NET Framework 4.7.2"
+                }
+            ]
+        },
+        "AutoFixtureVersion": {
+            "type": "parameter",
+            "datatype": "text",
+            "defaultValue": "4.8.0",
+            "replaces": "4.8.0",
+            "isRequired": false,
+            "description": "The version of AutoFixture to use when creating the unit test project"
+        }
+    },
+    "postActions": [
+        {
+            "description": "Restore NuGet packages required by this project.",
+            "manualInstructions": [
+                {
+                    "text": "Run 'dotnet restore'"
+                }
+            ],
+            "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+            "continueOnError": true
+        }
+    ]
+}

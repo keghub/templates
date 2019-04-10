@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+<!--#if (TargetFramework == 'netcore') -->
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+<!-- #elseif (TargetFramework == 'fx')
+    <TargetFramework>net472</TargetFramework>
+#elseif (TargetFramework == 'both')
+    <TargetFrameworks>netcoreapp2.2;net472</TargetFrameworks>
+#endif -->
+    <IsPackable>false</IsPackable>
+    <RootNamespace>Tests</RootNamespace>
+    <AssemblyName>UnitTestProject</AssemblyName>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoFixture" Version="4.8.0" />
+    <PackageReference Include="AutoFixture.AutoMoq" Version="4.8.0" />
+    <PackageReference Include="AutoFixture.Idioms" Version="4.8.0" />
+    <PackageReference Include="AutoFixture.NUnit3" Version="4.8.0" />
+    <PackageReference Include="Moq" Version="4.10.1" />
+    <PackageReference Include="nunit" Version="3.11.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.11.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+  </ItemGroup>
+
+</Project>

@@ -1,6 +1,7 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.0
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WcfWindowsService", "Templates\content\WcfWindowsService\WcfWindowsService.csproj", "{A7820866-7972-4A63-BDDA-9BFB903797E8}"
 EndProject
@@ -10,11 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WcfWindowsServiceWithNybus"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NybusWindowsService", "Templates\content\NybusWindowsService\NybusWindowsService.csproj", "{4714FE51-5482-4858-ABCE-86DB8CF05AD5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LambdaRunner", "Templates\content\LambdaLocalRunner\LambdaLocalRunner.csproj", "{0E6DFC37-1EED-438A-A255-96CFDEA06200}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LambdaLocalRunner", "Templates\content\LambdaLocalRunner\LambdaLocalRunner.csproj", "{0E6DFC37-1EED-438A-A255-96CFDEA06200}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "content", "content", "{6AC8CDB4-F15E-43CD-AF9B-E6435671E64A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiHost", "Templates\content\WebApiHost\WebApiHost.csproj", "{9FF2E9A5-955E-46AF-927E-9D653F9F76B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiHost", "Templates\content\WebApiHost\WebApiHost.csproj", "{9FF2E9A5-955E-46AF-927E-9D653F9F76B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestProject", "Templates\content\UnitTestProject\UnitTestProject.csproj", "{EA2393A6-1F97-4750-8958-E5387DEF4C0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,6 +81,18 @@ Global
 		{9FF2E9A5-955E-46AF-927E-9D653F9F76B8}.Release|x64.Build.0 = Release|Any CPU
 		{9FF2E9A5-955E-46AF-927E-9D653F9F76B8}.Release|x86.ActiveCfg = Release|Any CPU
 		{9FF2E9A5-955E-46AF-927E-9D653F9F76B8}.Release|x86.Build.0 = Release|Any CPU
+		{EA2393A6-1F97-4750-8958-E5387DEF4C0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA2393A6-1F97-4750-8958-E5387DEF4C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA2393A6-1F97-4750-8958-E5387DEF4C0C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EA2393A6-1F97-4750-8958-E5387DEF4C0C}.Debug|x64.Build.0 = Debug|Any CPU
+		{EA2393A6-1F97-4750-8958-E5387DEF4C0C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EA2393A6-1F97-4750-8958-E5387DEF4C0C}.Debug|x86.Build.0 = Debug|Any CPU
+		{EA2393A6-1F97-4750-8958-E5387DEF4C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA2393A6-1F97-4750-8958-E5387DEF4C0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA2393A6-1F97-4750-8958-E5387DEF4C0C}.Release|x64.ActiveCfg = Release|Any CPU
+		{EA2393A6-1F97-4750-8958-E5387DEF4C0C}.Release|x64.Build.0 = Release|Any CPU
+		{EA2393A6-1F97-4750-8958-E5387DEF4C0C}.Release|x86.ActiveCfg = Release|Any CPU
+		{EA2393A6-1F97-4750-8958-E5387DEF4C0C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +104,7 @@ Global
 		{0E6DFC37-1EED-438A-A255-96CFDEA06200} = {F49BC940-A1EC-41EE-ACAB-E3DB02A58EC4}
 		{6AC8CDB4-F15E-43CD-AF9B-E6435671E64A} = {F49BC940-A1EC-41EE-ACAB-E3DB02A58EC4}
 		{9FF2E9A5-955E-46AF-927E-9D653F9F76B8} = {6AC8CDB4-F15E-43CD-AF9B-E6435671E64A}
+		{EA2393A6-1F97-4750-8958-E5387DEF4C0C} = {6AC8CDB4-F15E-43CD-AF9B-E6435671E64A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B16ACED0-8B16-4E14-B2A1-CD4DC482B187}

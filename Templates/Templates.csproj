@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <PackageType>Template</PackageType>
-        <PackageVersion>2.0.0</PackageVersion>
+        <PackageVersion>2.1.0</PackageVersion>
         <PackageId>EMG.Templates</PackageId>
         <Title>Templates for creating projects with dotnet-new</Title>
         <Authors>EMG;Renato Golia</Authors>

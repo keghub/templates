@@ -1,0 +1,52 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "EMG",
+    "classifications": [
+        "EMG",
+        "Batch",
+        "JobProcessor"
+    ],
+    "name": "[EMG] Batch JobProcessor",
+    "identity": "EMG.Templates.Batch.JobProcessor",
+    "groupIdentity": "EMG.Templates.Batch.JobProcessor.CSharp",
+    "shortName": "emg-batch-jobprocessor",
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    },
+    "defaultName": "BatchJobProcessor1",
+    "sourceName": "BatchJobProcessor",
+    "guids": [],
+    "preferNameDirectory": true,
+    "primaryOutputs": [
+        {
+            "path": "BatchJobProcessor.csproj"
+        }
+    ],
+    "symbols": {
+        "ConfigureAWS": {
+            "type": "parameter",
+            "datatype": "bool",
+            "defaultValue": "true",
+            "description": "If specified, adds the basic setup for AWS"
+        },
+        "AddLoggly": {
+            "type": "parameter",
+            "datatype": "bool",
+            "defaultValue": "true",
+            "description": "If specified, adds support for Loggly"
+        }
+    },
+    "postActions": [
+        {
+            "description": "Restore NuGet packages required by this project.",
+            "manualInstructions": [
+                {
+                    "text": "Run 'dotnet restore'"
+                }
+            ],
+            "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+            "continueOnError": true
+        }
+    ]
+}

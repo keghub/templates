@@ -1,6 +1,5 @@
 #tool "nuget:?package=NuGet.CommandLine&version=4.9.2"
 #tool "nuget:?package=GitVersion.CommandLine&version=4.0.0"
-//#addin "Cake.FileHelpers"
 
 #load "./build/types.cake"
 
@@ -33,11 +32,13 @@ Task("Version")
     state.Version = new VersionInfo
     {
         PackageVersion = packageVersion,
-        BuildVersion = buildVersion
+        BuildVersion = buildVersion,
+        IsNewVersion = version.MajorMinorPatch == version.SemVer
     };
 
     Information($"Package version: {state.Version.PackageVersion}");
     Information($"Build version: {state.Version.BuildVersion}");
+    Information($"IsNewVersion: {state.Version.IsNewVersion}");
 
     if (BuildSystem.IsRunningOnTeamCity)
     {
@@ -77,6 +78,7 @@ Task("UploadPackagesToTeamCity")
 Task("UploadPackagesToMyGet")
     .IsDependentOn("Pack")
     .WithCriteria(BuildSystem.IsRunningOnTeamCity)
+    .WithCriteria<BuildState>((context, state) => state.Version.IsNewVersion)
     .Does<BuildState>(state => 
 {
     var apiKey = EnvironmentVariable("EMGPrivateApiKey");
@@ -97,6 +99,7 @@ Task("UploadPackagesToMyGet")
 });
 
 Task("Push")
+    .IsDependentOn("UploadPackagesToTeamCity")
     .IsDependentOn("UploadPackagesToMyGet");
 
 Task("Full")

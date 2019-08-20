@@ -10,6 +10,8 @@ public class VersionInfo
     public string PackageVersion { get; set; }
 
     public string BuildVersion {get; set; }
+
+    public bool IsNewVersion {get; set;}
 }
 
 public class BuildPaths

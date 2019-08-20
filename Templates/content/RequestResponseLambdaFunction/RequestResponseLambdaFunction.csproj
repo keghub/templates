@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <AWSProjectType>Lambda</AWSProjectType>
+
+    <RootNamespace>EMG</RootNamespace>
+    <AssemblyName>EMG.RequestResponseLambdaFunction</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.Logging.AspNetCore" Version="2.3.0" />
+<!--#if (ConfigureAWS)-->
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.100.1" />
+<!--#endif-->
+<!--#if (AddLoggly)-->
+    <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.0.2" />
+<!--#endif-->
+    <PackageReference Include="Kralizek.Extensions.Logging" Version="2.0.1" />
+    <PackageReference Include="Kralizek.Lambda.Template" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>  
+  </ItemGroup>
+</Project>

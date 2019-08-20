@@ -257,3 +257,7 @@ paket-files/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+tools/**
+!tools/packages.config
+outputs/**

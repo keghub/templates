@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>EMG.Templates</id>
+    <version>1.0.0</version>
+    <authors>EMG</authors>
+    <owners>EMG</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/emgdev/templates</projectUrl>
+    <iconUrl>http://static.emg-services.net/masterpages/pics/logos/emg-icon-64.png</iconUrl>
+    <description>Contains different templates to be used with dotnet-new</description>
+    <tags>dotnet-standard dotnet-new template</tags>
+    <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+  </metadata>
+  <files>
+    <file src="content/**" target="content" exclude="**\bin\**;**\obj\**;**\.vs\**;**\*.user;" />
+  </files>
+</package>

@@ -19,7 +19,9 @@
     "guids": [],
     "preferNameDirectory": true,
     "primaryOutputs": [
-        { "path": "UnitTestProject.csproj" }
+        {
+            "path": "UnitTestProject.csproj"
+        }
     ],
     "symbols": {
         "TargetFramework": {
@@ -44,8 +46,8 @@
         "AutoFixtureVersion": {
             "type": "parameter",
             "datatype": "text",
-            "defaultValue": "4.8.0",
-            "replaces": "4.8.0",
+            "defaultValue": "4.11.0",
+            "replaces": "4.11.0",
             "isRequired": false,
             "description": "The version of AutoFixture to use when creating the unit test project"
         }

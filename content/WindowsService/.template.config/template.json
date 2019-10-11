@@ -49,6 +49,12 @@
             "defaultValue": "false",
             "description": "Adds support for WCF services"
         },
+        "AWS": {
+            "type": "parameter",
+            "datatype": "bool",
+            "defaultValue": "false",
+            "description": "Adds basic setup for AWS services"
+        },
         "NybusCurrent": {
             "type": "computed",
             "value": "(Nybus ==\"Current\")"

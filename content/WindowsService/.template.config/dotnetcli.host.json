@@ -8,6 +8,10 @@
         "WCF": {
             "longName": "add-wcf",
             "shortName": "wcf"
+        },
+        "AWS": {
+            "longName": "add-aws",
+            "shortName": "aws"
         }
     }
 }

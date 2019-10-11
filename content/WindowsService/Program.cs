@@ -52,7 +52,7 @@ namespace EMG.WindowsService
         {
             var settings = new Dictionary<string, string>
             {
-#if(NybusLegacy)
+#if (NybusLegacy)
                 ["ConnectionStrings:ServiceBus"] = "host=rabbitmq://localhost/;username=guest;password=guest",
 #endif
                 ["Loggly:ApiKey"] = "asd-lol",
@@ -73,20 +73,21 @@ namespace EMG.WindowsService
             // https://github.com/emgdev/dotnet-utils/tree/master/docs/libraries/ServiceModel
             services.AddWcfService<TestService>(service =>
             {
-                service.AddBasicHttpEndpoint(typeof(ITestService), new Uri("http://localhost:10000/test"), binding => binding.WithNoSecurity());
+                service.AddBasicHttpEndpoint(typeof(ITestService), configuration.GetSection("WindowsService:TestService:BasicHttp").GetBasicHttpEndpointAddress(), binding => binding.WithNoSecurity()).Discoverable();
 
-                //service.AddBasicHttpEndpoint(typeof(ITestService), new Uri("http://localhost:10000/test"), binding => binding.WithNoSecurity()).Discovery();
+                //service.AddNamedPipeEndpoint(typeof(ITestService), configuration.GetSection("WindowsService:TestService:NamedPipe").GetNamedPipeEndpointAddress(), binding => binding.WithNoSecurity());
 
-                //service.AddNamedPipeEndpoint(typeof(ITestService), new Uri("net.pipe://localhost/test"), binding => binding.WithNoSecurity());
-
-                //service.AddNetTcpEndpoint(typeof(ITestService), new Uri("net.tcp://localhost:10001/test"), binding => binding.WithNoSecurity());
+                //service.AddNetTcpEndpoint(typeof(ITestService), configuration.GetSection("WindowsService:TestService:NetTcp").GetNetTcpEndpointAddress(), binding => binding.WithNoSecurity());
 
                 service.AddMetadataEndpoints();
 
                 service.AddExecutionLogging();
             });
 
-            //services.AddDiscovery<NetTcpBinding>(new Uri("net.tcp://localhost:8081/Announcement"), TimeSpan.FromSeconds(5), binding => binding.WithNoSecurity());
+            if (environment.IsProduction())
+            {
+                services.AddDiscovery<NetTcpBinding>(configuration.GetSection("WCF:AnnouncementService:NetTcp").GetNetTcpEndpointAddress(), TimeSpan.FromSeconds(5), binding => binding.WithNoSecurity());
+            }
 #endif
 
 #if (NybusCurrent)
@@ -123,7 +124,13 @@ namespace EMG.WindowsService
             });
 
             services.RegisterCommandHandler<TestCommand, TestCommandHandler>();
-#endif 
+#endif
+
+#if (AWS)
+            services.AddDefaultAWSOptions(configuration.GetAWSOptions());
+
+            //services.AddAWSService<ISomeAmazonServiceClient>();
+#endif
         }
 
         private static void ConfigureLogging(ILoggingBuilder logging, IConfiguration configuration, IServiceEnvironment environment)

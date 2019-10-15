@@ -1,0 +1,97 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "EMG",
+    "classifications": [
+        "EMG",
+        "Windows Service"
+    ],
+    "name": "[EMG] Windows Service",
+    "identity": "EMG.Templates.WindowsService",
+    "groupIdentity": "EMG.Templates.WindowsService.CSharp",
+    "shortName": "emg-windows-service",
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    },
+    "defaultName": "WindowsService1",
+    "sourceName": "WindowsService",
+    "guids": [],
+    "preferNameDirectory": true,
+    "primaryOutputs": [
+        {
+            "path": "WindowsService.csproj"
+        }
+    ],
+    "symbols": {
+        "Nybus": {
+            "type": "parameter",
+            "datatype": "choice",
+            "defaultValue": "None",
+            "choices": [
+                {
+                    "choice": "Current",
+                    "description": "Adds support for Nybus v1.x"
+                },
+                {
+                    "choice": "Legacy",
+                    "description": "Adds support for Nybus v0.x (Legacy)"
+                },
+                {
+                    "choice": "None",
+                    "description": "Do not add any support for Nybus"
+                }
+            ],
+            "description": "Adds support for Nybus handlers"
+        },
+        "WCF": {
+            "type": "parameter",
+            "datatype": "bool",
+            "defaultValue": "false",
+            "description": "Adds support for WCF services"
+        },
+        "AWS": {
+            "type": "parameter",
+            "datatype": "bool",
+            "defaultValue": "false",
+            "description": "Adds basic setup for AWS services"
+        },
+        "NybusCurrent": {
+            "type": "computed",
+            "value": "(Nybus ==\"Current\")"
+        },
+        "NybusLegacy": {
+            "type": "computed",
+            "value": "(Nybus ==\"Legacy\")"
+        }
+    },
+    "sources": [
+        {
+            "modifiers": [
+                {
+                    "condition": "(!WCF)",
+                    "exclude": [
+                        "TestService.cs"
+                    ]
+                },
+                {
+                    "condition": "(!NybusCurrent && !NybusLegacy)",
+                    "exclude": [
+                        "TestCommandHandler.cs"
+                    ]
+                }
+            ]
+        }
+    ],
+    "postActions": [
+        {
+            "description": "Restore NuGet packages required by this project.",
+            "manualInstructions": [
+                {
+                    "text": "Run 'dotnet restore'"
+                }
+            ],
+            "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+            "continueOnError": true
+        }
+    ]
+}

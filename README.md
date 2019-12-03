@@ -138,7 +138,7 @@ This template is obsolete. Please use the `emg-windows-service` with the `--add-
 ### Windows Service
 
 ```
-dotnet new emg-wcf-service
+dotnet new emg-windows-service
 ```
 
 This template creates a Windows Service application.

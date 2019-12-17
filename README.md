@@ -12,6 +12,7 @@ The current version of the package contains the following templates.
 |-|-|-|
 |ASP.NET Core API                          |emg-web-api               |
 |Batch JobProcessor                        |emg-batch-jobprocessor    |
+|Hosted Service                            |emg-hosted-service        |
 |Lambda Local Runner                       |emg-lambda-local-runner   |
 |Lambda Event Function                     |emg-lambda-event          |
 |Lambda RequestResponse Function           |emg-lambda-requestresponse|
@@ -47,6 +48,21 @@ dotnet new emg-batch-jobprocessor
 ```
 
 This template creates a console application that can be used to process AWS Batch jobs.
+
+### Hosted Service
+
+```
+dotnet new emg-hosted-service
+```
+
+This template creates a Hosted Service application. The runtime is selected depending on which workloads are selected.
+
+The application can be customized with the following parameters:
+* `--add-nybus Current` adds support for hosting Nybus v1.x handlers
+* `--add-nybus Legacy` adds support for hosting Nybus v0.x handlers. Requires .NET Framework 4.8
+* `--add-wcf` adds support for hosting WCF services. Requires .NET Framework 4.8
+* `--add-aws` adds basic setup to AWS services
+* `--force-net48` forces the runtime to be .NET Framework 4.8 even if the application could run on .NET Core 3.1
 
 ### Lambda Local Runner
 

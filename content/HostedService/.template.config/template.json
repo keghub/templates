@@ -1,0 +1,115 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "EMG",
+    "classifications": [
+        "EMG",
+        "Hosted Service"
+    ],
+    "name": "[EMG] Hosted Service",
+    "identity": "EMG.Templates.HostedService",
+    "groupIdentity": "EMG.Templates.HostedService.CSharp",
+    "shortName": "emg-hosted-service",
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    },
+    "defaultName": "HostedService1",
+    "sourceName": "Hosted_Service",
+    "guids": [
+        "4BC5DF1F-B155-4A69-9719-0AB349B1ACB2"
+    ],
+    "preferNameDirectory": true,
+    "primaryOutputs": [
+        {
+            "path": "HostedService.csproj"
+        }
+    ],
+    "symbols": {
+        "Nybus": {
+            "type": "parameter",
+            "datatype": "choice",
+            "defaultValue": "None",
+            "choices": [
+                {
+                    "choice": "Current",
+                    "description": "Adds support for Nybus v1.x"
+                },
+                {
+                    "choice": "Legacy",
+                    "description": "Adds support for Nybus v0.x (Legacy). Requires .NET Framework 4.8"
+                },
+                {
+                    "choice": "None",
+                    "description": "Do not add any support for Nybus"
+                }
+            ],
+            "description": "Adds support for Nybus handlers"
+        },
+        "WCF": {
+            "type": "parameter",
+            "datatype": "bool",
+            "defaultValue": "false",
+            "description": "Adds support for WCF services. Requires .NET Framework 4.8"
+        },
+        "AWS": {
+            "type": "parameter",
+            "datatype": "bool",
+            "defaultValue": "false",
+            "description": "Adds basic setup for AWS services"
+        },
+        "NybusCurrent": {
+            "type": "computed",
+            "value": "(Nybus ==\"Current\")"
+        },
+        "NybusLegacy": {
+            "type": "computed",
+            "value": "(Nybus ==\"Legacy\")"
+        },
+        "ForceNetFx": {
+            "type": "parameter",
+            "datatype": "bool",
+            "defaultValue": "false",
+            "description": "Sets the runtime to .NET Framework 4.8"
+        },
+        "RequiresWindows": {
+            "type": "computed",
+            "value": "(ForceNetFx) || (WCF) || (Nybus ==\"Legacy\")"
+        }
+    },
+    "sources": [
+        {
+            "modifiers": [
+                {
+                    "condition": "(!WCF)",
+                    "exclude": [
+                        "TestService.cs"
+                    ]
+                },
+                {
+                    "condition": "(!NybusCurrent && !NybusLegacy)",
+                    "exclude": [
+                        "TestCommandHandler.cs"
+                    ]
+                },
+                {
+                    "condition": "(!RequiresWindows)",
+                    "exclude": [
+                        "ExitHelper.cs"
+                    ]
+                }
+            ]
+        }
+    ],
+    "postActions": [
+        {
+            "description": "Restore NuGet packages required by this project.",
+            "manualInstructions": [
+                {
+                    "text": "Run 'dotnet restore'"
+                }
+            ],
+            "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+            "continueOnError": true
+        }
+    ]
+}

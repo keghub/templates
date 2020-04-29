@@ -133,7 +133,7 @@ The project uses:
 * Castle Windsor
 * WCF
 
-This template is obsolete. Please use the `emg-windows-service` with the `--add-wcf` flag.
+This template is obsolete. Please use the `emg-hosted-service` with the `--add-wcf` flag.
 
 ### WCF Windows Service with Nybus
 
@@ -149,7 +149,7 @@ The project uses:
 * Nybus v0
 * WCF
 
-This template is obsolete. Please use the `emg-windows-service` with the `--add-nybus Legacy` parameter and the `--add-wcf` flag.
+This template is obsolete. Please use the `emg-hosted-service` with the `--add-nybus Legacy` parameter and the `--add-wcf` flag.
 
 ### Windows Service
 
@@ -157,13 +157,15 @@ This template is obsolete. Please use the `emg-windows-service` with the `--add-
 dotnet new emg-windows-service
 ```
 
-This template creates a Windows Service application.
+This template creates a Windows Service application based on TopShelf.
 
 The application can be customized with the following parameters:
 * `--add-nybus Current` adds support for hosting Nybus v1.x handlers
 * `--add-nybus Legacy` adds support for hosting Nybus v0.x handlers
 * `--add-wcf` adds support for hosting WCF services
 * `--add-aws` adds basic setup to AWS services
+
+If your application needs to be hosted in a Docker container, please use the `emg-hosted-service` with the same parameters.
 
 ## Installation
 

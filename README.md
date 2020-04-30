@@ -8,19 +8,16 @@ You can use [this guide](https://docs.microsoft.com/en-us/dotnet/core/tools/dotn
 
 The current version of the package contains the following templates.
 
-|Name|Short name||
-|-|-|-|
-|ASP.NET Core API                          |emg-web-api               |
-|Batch JobProcessor                        |emg-batch-jobprocessor    |
-|Hosted Service                            |emg-hosted-service        |
-|Lambda Local Runner                       |emg-lambda-local-runner   |
-|Lambda Event Function                     |emg-lambda-event          |
-|Lambda RequestResponse Function           |emg-lambda-requestresponse|
-|Test Project                              |emg-test-lib              |
-|Nybus Windows Service _obsolete_          |emg-nybus-service         |_obsolete_
-|WCF Windows Service _obsolete_            |emg-wcf-service           |_obsolete_
-|WCF Windows Service with Nybus            |emg-wcf-service-nybus     |_obsolete_
-|Windows Service                           |emg-windows-service       |
+|Name|Short name|
+|-|-|
+|ASP.NET Core API                          |emg-web-api               
+|Batch JobProcessor                        |emg-batch-jobprocessor    
+|Hosted Service                            |emg-hosted-service        
+|Lambda Local Runner                       |emg-lambda-local-runner   
+|Lambda Event Function                     |emg-lambda-event          
+|Lambda RequestResponse Function           |emg-lambda-requestresponse
+|Test Project                              |emg-test-lib              
+|Windows Service                           |emg-windows-service       
 
 ### ASP.NET Core API
 
@@ -105,52 +102,6 @@ It also has references to
 
 The project will contain a specialization of `AutoDataAttribute` that configures the Moq glue library for AutoFixture.
 
-### Nybus Windows Service
-
-```
-dotnet new emg-nybus-service
-```
-
-This template creates a Windows Service application hosting Nybus v0 handlers.
-
-The project uses:
-* TopShelf
-* Castle Windsor
-* Nybus v0
-
-This template is obsolete. Please use the `emg-windows-service` with the `--add-nybus Legacy` parameter.
-
-### WCF Windows Service
-
-```
-dotnet new emg-wcf-service
-```
-
-This template creates a Windows Service application hosting WCF services.
-
-The project uses:
-* TopShelf
-* Castle Windsor
-* WCF
-
-This template is obsolete. Please use the `emg-hosted-service` with the `--add-wcf` flag.
-
-### WCF Windows Service with Nybus
-
-```
-dotnet new emg-wcf-service
-```
-
-This template creates a Windows Service application hosting WCF services and Nybus v0 handlers.
-
-The project uses:
-* TopShelf
-* Castle Windsor
-* Nybus v0
-* WCF
-
-This template is obsolete. Please use the `emg-hosted-service` with the `--add-nybus Legacy` parameter and the `--add-wcf` flag.
-
 ### Windows Service
 
 ```
@@ -174,8 +125,6 @@ You can install the templates in this package by running the following command:
 dotnet new -i EMG.Templates
 ```
 
-Since the package is hosted in the EMG private NuGet feed, make sure it is listed as a authenticated source.
-
 Alternatively, you can check out the repository and install the package by running the following command in the folder where you checked out the repository:
 ```
 dotnet new -i .\content\
@@ -196,12 +145,10 @@ Example:
     Templates:
       [EMG] Batch JobProcessor (emg-batch-jobprocessor) C#
       [EMG] Lambda Event Function (emg-lambda-event) C#
+      [EMG] Hosted Service (emg-hosted-service) C#
       [EMG] Lambda Local Runner (emg-lambda-local-runner) C#
-      [EMG] Nybus Windows Service (emg-nybus-service) C#
       [EMG] Lambda RequestResponse Function (emg-lambda-requestresponse) C#
       [EMG] Test Project (emg-test-lib) C#
-      [EMG] WCF Windows Service (emg-wcf-service) C#
-      [EMG] WCF Windows Service with Nybus (emg-wcf-service-nybus) C#
       [EMG] ASP.NET Core API (emg-web-api) C#
       [EMG] Windows Service (emg-windows-service) C#
     Uninstall Command:

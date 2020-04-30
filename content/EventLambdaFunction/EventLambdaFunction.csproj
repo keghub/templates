@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <AWSProjectType>Lambda</AWSProjectType>
 
@@ -10,18 +10,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Amazon.Lambda.Logging.AspNetCore" Version="2.3.0" />
+    <PackageReference Include="Amazon.Lambda.Logging.AspNetCore" Version="3.0.0" />
 <!--#if (ConfigureAWS)-->
-    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.100.1" />
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.101" />
 <!--#endif-->
 <!--#if (AddLoggly)-->
     <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.0.2" />
 <!--#endif-->
     <PackageReference Include="Kralizek.Extensions.Logging" Version="2.0.1" />
-    <PackageReference Include="Kralizek.Lambda.Template" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="2.1.1" />
+    <PackageReference Include="Kralizek.Lambda.Template" Version="4.0.0" />
+    <PackageReference Include="Kralizek.Extensions.Configuration.Objects" Version="1.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="3.1.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="3.1.3" />
   </ItemGroup>
 
   <ItemGroup>

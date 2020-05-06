@@ -62,7 +62,7 @@ Task("Pack")
 });
 
 Task("Full")
-    .IsDependentOn("BuildTemplates")
+    //.IsDependentOn("BuildTemplates")
     .IsDependentOn("Pack");
 
 RunTarget(target);

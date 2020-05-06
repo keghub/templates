@@ -18,6 +18,12 @@ Setup<BuildState>(_ =>
     return state;
 });
 
+Task("BuildTemplates")
+    .Does<BuildState>(state => 
+{
+    DotNetBuild(state.Paths.SolutionFile.ToString());
+});
+
 Task("Pack")
     .Does<BuildState>(state => 
 {
@@ -30,6 +36,7 @@ Task("Pack")
 });
 
 Task("Full")
+    .IsDependentOn("BuildTemplates")
     .IsDependentOn("Pack");
 
 RunTarget(target);

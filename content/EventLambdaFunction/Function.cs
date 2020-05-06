@@ -6,25 +6,25 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-[assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
+[assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 
 namespace EMG
 {
     public class Function : EventFunction<string>
     {
-        private static readonly Dictionary<string, string> Settings = new Dictionary<string, string>
-        {
-            //#if (AddLoggly)
-            ["Loggly:ApplicationName"] = "EMG EventLambdaFunction",
-            ["Loggly:ApiKey"] = "test",
-            //#endif
-        };
-
         protected override void Configure(IConfigurationBuilder builder)
         {
             builder.SetBasePath(Directory.GetCurrentDirectory());
             builder.AddJsonFile("appsettings.json", true, false);
-            builder.AddInMemoryCollection(Settings);
+            builder.AddObject(new 
+            {
+                //#if (AddLoggly)
+                Loggly = new {
+                    ApplicationName = "EMG EventLambdaFunction",
+                    ApiKey = "test"
+                }
+                //#endif
+            });
             builder.AddEnvironmentVariables();
         }
 

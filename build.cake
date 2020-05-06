@@ -22,7 +22,7 @@ Setup<BuildState>(_ =>
 Task("BuildTemplates")
     .Does<BuildState>(state => 
 {
-    DotNetBuild(state.Paths.SolutionFile.ToString());
+    DotNetCoreBuild(state.Paths.SolutionFile.ToString());
 });
 
 Task("Version")

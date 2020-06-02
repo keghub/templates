@@ -6,9 +6,17 @@ namespace Tests
 {
     public class CustomAutoDataAttribute : AutoDataAttribute
     {
-        public CustomAutoDataAttribute() : base (CreateFixture) {}
+        public CustomAutoDataAttribute() : base (FixtureHelper.CreateFixture) { }
+    }
 
-        private static IFixture CreateFixture()
+    public class InlineCustomAutoDataAttribute : InlineAutoDataAttribute
+    {
+        public InlineCustomAutoDataAttribute(params object[] arguments) : base(FixtureHelper.CreateFixture, arguments) { }
+    }
+
+    public static class FixtureHelper
+    {
+        public static IFixture CreateFixture()
         {
             var fixture = new Fixture();
 

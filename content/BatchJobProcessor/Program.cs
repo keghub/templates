@@ -65,7 +65,15 @@ namespace EMG
 
             var builder = new ConfigurationBuilder();
             builder.SetBasePath(AppDomain.CurrentDomain.BaseDirectory);
-            builder.AddInMemoryCollection(settings);
+            builder.AddObject(new 
+            {
+                //#if (AddLoggly)
+                Loggly = new {
+                    ApplicationName = "EMG EventLambdaFunction",
+                    ApiKey = "test"
+                }
+                //#endif
+            });
             builder.AddJsonFile("appsettings.json", true, false);
             builder.AddEnvironmentVariables();
 

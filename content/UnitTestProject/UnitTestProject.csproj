@@ -2,11 +2,11 @@
 
   <PropertyGroup>
 <!--#if (TargetFramework == 'netcore') -->
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
 <!-- #elseif (TargetFramework == 'fx')
-    <TargetFramework>net472</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
 #elseif (TargetFramework == 'both')
-    <TargetFrameworks>netcoreapp2.2;net472</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net48</TargetFrameworks>
 #endif -->
     <IsPackable>false</IsPackable>
     <RootNamespace>Tests</RootNamespace>
@@ -19,10 +19,10 @@
     <PackageReference Include="AutoFixture.AutoMoq" Version="4.11.0" />
     <PackageReference Include="AutoFixture.Idioms" Version="4.11.0" />
     <PackageReference Include="AutoFixture.NUnit3" Version="4.11.0" />
-    <PackageReference Include="Moq" Version="4.11.0" />
+    <PackageReference Include="Moq" Version="4.14.1" />
     <PackageReference Include="nunit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.12.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
   </ItemGroup>
 
 </Project>

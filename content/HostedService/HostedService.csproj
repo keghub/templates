@@ -11,16 +11,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.0.2" />
+    <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.1.0" />
     <PackageReference Include="Kralizek.Extensions.Logging" Version="2.0.1" />
     <PackageReference Include="Kralizek.Extensions.Configuration.Objects" Version="1.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Nybus)' == 'Current'">
-    <PackageReference Include="Nybus" Version="1.5.2" />
-    <PackageReference Include="Nybus.Extensions.Hosting.HostedService" Version="1.5.2" />
-    <PackageReference Include="Nybus.Engine.RabbitMq" Version="1.5.2" />
+    <PackageReference Include="Nybus" Version="1.5.3" />
+    <PackageReference Include="Nybus.Extensions.Hosting.HostedService" Version="1.5.3" />
+    <PackageReference Include="Nybus.Engine.RabbitMq" Version="1.5.3" />
   </ItemGroup>
   <ItemGroup Condition="'$(Nybus)' == 'Legacy'">
     <PackageReference Include="Nybus.Core" Version="0.6.0.97" />
@@ -28,11 +28,11 @@
     <PackageReference Include="Nybus.Legacy.NetExtensions.Adapters.MassTransit" Version="1.1.1" />
   </ItemGroup>
   <ItemGroup Condition="'$(WCF)' == 'True'">
-    <PackageReference Include="EMG.Utilities.ServiceModel" Version="1.4.0" />
+    <PackageReference Include="EMG.Utilities.ServiceModel" Version="1.9.0" />
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup Condition="'$(AWS)' == 'True'">
-    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.100.1" />
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.101" />
   </ItemGroup>
 
   <ItemGroup>

@@ -55,14 +55,6 @@ namespace EMG
 
         static IConfigurationRoot CreateConfiguration()
         {
-            var settings = new Dictionary<string, string>
-            {
-                //#if (AddLoggly)
-                ["Loggly:ApplicationName"] = "EMG BatchJobProcessor",
-                ["Loggly:ApiKey"] = "test"
-                //#endif
-            };
-
             var builder = new ConfigurationBuilder();
             builder.SetBasePath(AppDomain.CurrentDomain.BaseDirectory);
             builder.AddObject(new 

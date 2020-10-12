@@ -59,6 +59,7 @@ namespace WebApiHost
                 nybus.UseRabbitMqBusEngine(rabbitMq =>
                 {
                     rabbitMq.UseConfiguration();
+                    rabbitMq.Configure(cfg => cfg.UnackedMessageCountLimit = 10);
                 });
             });
 

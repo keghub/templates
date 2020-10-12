@@ -103,7 +103,11 @@ namespace EMG.Hosted_Service
             {
                 nybus.UseConfiguration(context.Configuration);
 
-                nybus.UseRabbitMqBusEngine(rabbitMq => rabbitMq.UseConfiguration());
+                nybus.UseRabbitMqBusEngine(rabbitMq => 
+                {
+                    rabbitMq.UseConfiguration();
+                    rabbitMq.Configure(cfg => cfg.UnackedMessageCountLimit = 10);
+                });
 
                 nybus.SubscribeToCommand<TestCommand>();
             });

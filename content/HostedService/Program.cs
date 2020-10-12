@@ -56,7 +56,6 @@ namespace EMG.Hosted_Service
 #endif
                 Loggly = new
                 {
-                    ApiKey = "asd-lol",
                     ApplicationName = "EMG.Hosted_Service"
                 }
             });

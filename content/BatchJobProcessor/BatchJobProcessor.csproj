@@ -13,7 +13,7 @@
     <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.101" />
 <!--#endif-->
 <!--#if (AddLoggly)-->
-    <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.1.0" />
+    <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.1.1" />
 <!--#endif-->
 
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.0" />

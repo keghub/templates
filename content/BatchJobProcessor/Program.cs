@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using McMaster.Extensions.CommandLineUtils;
 using Microsoft.Extensions.Configuration;
@@ -51,6 +52,8 @@ namespace EMG
             await processor.ExecuteAsync(parameters).ConfigureAwait(false);
 
             logger.LogInformation(parameters, s => $"Job complete");
+
+            Thread.Sleep(1000); // Thread.Sleep to ensure all logs are sent to Loggly before the application terminates.
         }
 
         static IConfigurationRoot CreateConfiguration()

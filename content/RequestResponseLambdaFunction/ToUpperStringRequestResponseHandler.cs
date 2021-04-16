@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Kralizek.Lambda;
@@ -12,18 +13,26 @@ namespace EMG
 
         public ToUpperStringRequestResponseHandler(ILogger<ToUpperStringRequestResponseHandler> logger)
         {
-            if (logger == null)
-            {
-                throw new ArgumentNullException(nameof(logger));
-            }
-            _logger = logger;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task<string> HandleAsync(string input, ILambdaContext context)
         {
-            await Task.Delay(1);
+            try
+            {
+                await Task.Delay(1);
 
-            return input?.ToUpper();
+                return input?.ToUpper();
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, $"Error in HandleAsync for {nameof(ToUpperStringRequestResponseHandler)}");
+                throw;
+            }
+            finally
+            {
+                Thread.Sleep(1000); // Thread.Sleep to ensure all logs are sent to Loggly before the application terminates.
+            }
         }
     }
 }

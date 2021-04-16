@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
@@ -24,7 +25,14 @@ namespace EMG
 
         public async Task ExecuteAsync(JobParameters parameters)
         {
-            await Task.Delay(100);
+            try
+            {
+                await Task.CompletedTask;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, $"Error in HandleAsync for {nameof(JobProcessor)}");
+            }
         }
     }
 }

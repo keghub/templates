@@ -16,15 +16,6 @@ namespace EMG
         {
             builder.SetBasePath(Directory.GetCurrentDirectory());
             builder.AddJsonFile("appsettings.json", true, false);
-            builder.AddObject(new 
-            {
-                //#if (AddLoggly)
-                Loggly = new {
-                    ApplicationName = "EMG EventLambdaFunction",
-                    ApiKey = "test"
-                }
-                //#endif
-            });
             builder.AddEnvironmentVariables();
         }
 
@@ -32,9 +23,7 @@ namespace EMG
         {
             logging.AddConfiguration(Configuration.GetSection("Logging"));
             logging.AddLambdaLogger(Configuration, "Logging");
-            //#if (AddLoggly)
             logging.AddLoggly(Configuration.GetSection("Loggly"));
-            //#endif
         }
 
         protected override void ConfigureServices(IServiceCollection services, IExecutionEnvironment executionEnvironment)

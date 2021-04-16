@@ -24,14 +24,14 @@ namespace EMG.Hosted_Service
         public Task HandleAsync(IDispatcher dispatcher, ICommandContext<TestCommand> context)
         {
             try 
-	        {	        
+            {	        
                 return Task.CompletedTask;
-	        }
-	        catch (Exception exception)
-	        {
+            }
+            catch (Exception exception)
+            {
                 _logger.LogError(exception, $"Error in HandleAsync for {nameof(TestCommandHandler)}");
-		        throw;
-	        }
+                throw;
+            }
         }
     }
 #endif
@@ -48,14 +48,14 @@ namespace EMG.Hosted_Service
         public Task Handle(CommandContext<TestCommand> commandMessage)
         {
             try 
-	        {	        
+            {	        
                 return Task.CompletedTask;
-	        }
-	        catch (Exception exception)
-	        {
+            }
+            catch (Exception exception)
+            {
                 _logger.LogError(exception, $"Error in HandleAsync for {nameof(TestCommandHandler)}");
-		        throw;
-	        }
+                throw;
+            }
         }
     }
 #endif

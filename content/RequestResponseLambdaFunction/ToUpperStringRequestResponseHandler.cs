@@ -27,11 +27,9 @@ namespace EMG
             catch (Exception exception)
             {
                 _logger.LogError(exception, $"Error in HandleAsync for {nameof(ToUpperStringRequestResponseHandler)}");
-                throw;
-            }
-            finally
-            {
+                
                 Thread.Sleep(1000); // Thread.Sleep to ensure all logs are sent to Loggly before the application terminates.
+                throw;
             }
         }
     }

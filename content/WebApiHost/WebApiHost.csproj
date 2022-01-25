@@ -17,9 +17,9 @@
     <PackageReference Include="EMG.Wcf.Discovery" Version="1.0.25" />
 <!--#endif-->
 <!--#if (AddNybus) -->
-    <PackageReference Include="Nybus.Engine.RabbitMq" Version="1.5.1" />
-    <PackageReference Include="Nybus" Version="1.5.1" />
-    <PackageReference Include="Nybus.Extensions.Hosting.HostedService" Version="1.5.1" />
+    <PackageReference Include="Nybus.Engine.RabbitMq" Version="1.6.0" />
+    <PackageReference Include="Nybus" Version="1.6.0" />
+    <PackageReference Include="Nybus.Extensions.Hosting.HostedService" Version="1.6.0" />
 <!--#endif -->
 <!--#if (AddNybusBridge || ConfigureAWS) -->
     <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.100.1" />

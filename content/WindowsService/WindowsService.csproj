@@ -19,9 +19,9 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(Nybus)' == 'Current'">
-    <PackageReference Include="Nybus" Version="1.5.2" />
-    <PackageReference Include="Nybus.Extensions.Hosting.HostedService" Version="1.5.2" />
-    <PackageReference Include="Nybus.Engine.RabbitMq" Version="1.5.2" />
+    <PackageReference Include="Nybus" Version="1.6.0" />
+    <PackageReference Include="Nybus.Extensions.Hosting.HostedService" Version="1.6.0" />
+    <PackageReference Include="Nybus.Engine.RabbitMq" Version="1.6.0" />
   </ItemGroup>
   <ItemGroup Condition="'$(Nybus)' == 'Legacy'">
     <PackageReference Include="Nybus.Core" Version="0.6.3" />

@@ -9,10 +9,10 @@ using EMG.Wcf.Discovery.Service;
 //#endif
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 //#if (AddNybus)
 using Nybus;
 //#endif
@@ -21,7 +21,7 @@ namespace WebApiHost
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IHostingEnvironment hostingEnvironment)
+        public Startup(IConfiguration configuration, IHostEnvironment hostingEnvironment)
         {
             Configuration = configuration;
             HostingEnvironment = hostingEnvironment;
@@ -29,11 +29,11 @@ namespace WebApiHost
 
         public IConfiguration Configuration { get; }
 
-        public IHostingEnvironment HostingEnvironment { get; }
+        public IHostEnvironment HostingEnvironment { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(ConfigureMvc).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(ConfigureMvc);
 
             // Adds support for ASP.NET Core health checks: https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-2.2
             services.AddHealthChecks(); 
@@ -89,11 +89,12 @@ namespace WebApiHost
             {
                 // Adds support for friendly error when an MVC action throws an uncaught exception
                 options.AddExceptionHandlerFilter();
+                options.EnableEndpointRouting = false;
             }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostEnvironment env)
         {
             if (env.IsDevelopment())
             {

@@ -8,10 +8,10 @@
   "profile": "",
   "region": "eu-west-1",
   "configuration": "Release",
-  "framework": "netcoreapp3.1",
+  "framework": "net6.0",
   "function-name": "RequestResponseLambdaFunction",
   "function-role": "",
-  "function-runtime": "dotnetcore3.1",
+  "function-runtime": "dotnet6",
   "function-memory-size": 128,
   "function-timeout": 30,
   "function-handler": "EMG.RequestResponseLambdaFunction::EMG.Function::FunctionHandlerAsync"

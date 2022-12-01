@@ -2,7 +2,7 @@
 
   <PropertyGroup>
 <!--#if (TargetFramework == 'netcore') -->
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
 <!-- #elseif (TargetFramework == 'fx')
     <TargetFramework>net48</TargetFramework>
 #elseif (TargetFramework == 'both')

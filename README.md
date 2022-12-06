@@ -13,7 +13,6 @@ The current version of the package contains the following templates.
 |ASP.NET Core API                          |emg-web-api               
 |Batch JobProcessor                        |emg-batch-jobprocessor    
 |Hosted Service                            |emg-hosted-service        
-|Lambda Local Runner                       |emg-lambda-local-runner   
 |Lambda Event Function                     |emg-lambda-event          
 |Lambda RequestResponse Function           |emg-lambda-requestresponse
 |Test Project                              |emg-test-lib              
@@ -60,14 +59,6 @@ The application can be customized with the following parameters:
 * `--add-wcf` adds support for hosting WCF services. Requires .NET Framework 4.8
 * `--add-aws` adds basic setup to AWS services
 * `--force-net48` forces the runtime to be .NET Framework 4.8 even if the application could run on .NET Core 3.1
-
-### Lambda Local Runner
-
-```
-dotnet new emg-lambda-local-runner
-```
-
-This template creates a console application using the `LambdaRunner` to host locally a AWS Lambda function.
 
 ### Lambda Event Function
 
@@ -146,7 +137,6 @@ Example:
       [EMG] Batch JobProcessor (emg-batch-jobprocessor) C#
       [EMG] Lambda Event Function (emg-lambda-event) C#
       [EMG] Hosted Service (emg-hosted-service) C#
-      [EMG] Lambda Local Runner (emg-lambda-local-runner) C#
       [EMG] Lambda RequestResponse Function (emg-lambda-requestresponse) C#
       [EMG] Test Project (emg-test-lib) C#
       [EMG] ASP.NET Core API (emg-web-api) C#

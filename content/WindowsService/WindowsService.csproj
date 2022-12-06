@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net471</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <RootNamespace>EMG.WindowsService</RootNamespace>
     <AssemblyName>EMG.Service.WindowsService</AssemblyName>
@@ -14,8 +14,8 @@
     <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.1.1" />
     <PackageReference Include="Kralizek.Extensions.Logging" Version="2.0.1" />
 
-    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Nybus)' == 'Current'">

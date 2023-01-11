@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Amazon.Lambda.Core;
+using EMG.Extensions.Logging.Loggly;
 using Kralizek.Lambda;
 using Microsoft.Extensions.Logging;
 
@@ -10,10 +11,12 @@ namespace EMG
     public class StringEventHandler : IEventHandler<string>
     {
         private readonly ILogger<StringEventHandler> _logger;
+        private readonly ILogglyProcessor _logglyProcessor;
 
-        public StringEventHandler(ILogger<StringEventHandler> logger)
+        public StringEventHandler(ILogger<StringEventHandler> logger, ILogglyProcessor logglyProcessor)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _logglyProcessor = logglyProcessor ?? throw new ArgumentNullException(nameof(logglyProcessor));
         }
 
         public Task HandleAsync(string input, ILambdaContext context)
@@ -31,7 +34,7 @@ namespace EMG
             }
             finally
             {
-                Thread.Sleep(1000); // Thread.Sleep to ensure all logs are sent to Loggly before the application terminates.
+                _logglyProcessor.FlushMessages(); // ensure all logs are sent to Loggly before the application terminates.
             }
         }
     }

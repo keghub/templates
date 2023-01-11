@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using EMG.Extensions.Logging.Loggly;
 using McMaster.Extensions.CommandLineUtils;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,6 +41,7 @@ namespace EMG
             var processor = serviceProvider.GetRequiredService<JobProcessor>();
 
             var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
+            var logglyProcessor = serviceProvider.GetRequiredService<ILogglyProcessor>();
 
             var parameters = new JobParameters
             {
@@ -54,7 +56,7 @@ namespace EMG
 
             logger.LogInformation(parameters, s => $"Job complete");
 
-            Thread.Sleep(1000); // Thread.Sleep to ensure all logs are sent to Loggly before the application terminates.
+            logglyProcessor.FlushMessages(); // flush the logs, to prevent losing logs due to buffering for short lived applications
         }
 
         static IConfigurationRoot CreateHostingConfiguration()

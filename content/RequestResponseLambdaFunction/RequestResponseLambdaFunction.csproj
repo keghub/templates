@@ -16,7 +16,7 @@
     <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.101" />
 <!--#endif-->
 <!--#if (AddLoggly)-->
-    <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.2.0" />
+    <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.3.0" />
 <!--#endif-->
     <PackageReference Include="Kralizek.Extensions.Logging" Version="2.0.1" />
     <PackageReference Include="Kralizek.Lambda.Template" Version="4.1.0" />

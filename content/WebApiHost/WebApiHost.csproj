@@ -7,8 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EMG.Extensions.AspNetCore.Authentication.JWT" Version="1.1.0" />
-    <PackageReference Include="EMG.Extensions.AspNetCore.Filters.Error" Version="1.1.0" />
+    <PackageReference Include="AWSSDK.Core" Version="3.7.106.44" />
+    <PackageReference Include="EMG.Extensions.AspNetCore.Authentication.JWT" Version="1.1.1" />
+    <PackageReference Include="EMG.Extensions.AspNetCore.Filters.Error" Version="1.1.1" />
     <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.3.0" />
     <PackageReference Include="Kralizek.Extensions.Logging" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -22,7 +23,7 @@
     <PackageReference Include="Nybus.Extensions.Hosting.HostedService" Version="1.6.0" />
 <!--#endif -->
 <!--#if (AddNybusBridge || ConfigureAWS) -->
-    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.100.1" />
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.7" />
 <!--#endif-->
 <!--#if (AddNybusBridge)-->
     <PackageReference Include="EMG.Common.Framework.NybusBridge" Version="2.4.0" />

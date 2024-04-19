@@ -14,9 +14,9 @@
     <PackageReference Include="Kralizek.Extensions.Logging" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-<!--#if (AddWcfDiscovery) -->
-    <PackageReference Include="EMG.Wcf.Discovery" Version="1.0.25" />
-<!--#endif-->
+    <!--#if (AddDiscoveryAdapter) -->
+    <PackageReference Include="EMG.Extensions.DependencyInjection.ServiceModel.DiscoveryAdapter" Version="1.3.0" />
+    <!--#endif-->
 <!--#if (AddNybus) -->
     <PackageReference Include="Nybus.Engine.RabbitMq" Version="1.6.0" />
     <PackageReference Include="Nybus" Version="1.6.0" />

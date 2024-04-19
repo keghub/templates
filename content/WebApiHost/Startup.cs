@@ -4,8 +4,7 @@ using EMG.Common;
 //#endif
 using EMG.Extensions.AspNetCore;
 //#if (AddWcfDiscovery)
-using EMG.Wcf.Discovery;
-using EMG.Wcf.Discovery.Service;
+using EMG.Extensions.DependencyInjection.Discovery;
 //#endif
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -65,14 +64,13 @@ namespace WebApiHost
 
             // Configures the NybusHostedService so that Nybus is started when the web application is started
             services.AddHostedService<NybusHostedService>();
-//#endif
-//#if (AddWcfDiscovery)
+            //#endif
 
-            // Configures the WCF Discovery from the current configuration
-            services.AddDiscovery(Configuration);
-            services.AddSingleton<IDiscoveryService, NetTcpDiscoveryService>();
-//#endif
-//#if (AddNybusBridge || ConfigureAWS)
+            //#if (AddDiscoveryAdapter)
+            services.ConfigureServiceDiscovery(Configuration.GetSection("Discovery"));
+            services.AddServiceDiscoveryAdapter();
+            //#endif
+            //#if (AddNybusBridge || ConfigureAWS)
 
             // Configures AWS using the configuration values
             services.AddDefaultAWSOptions(Configuration.GetAWSOptions());

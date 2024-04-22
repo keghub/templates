@@ -3,8 +3,9 @@ using Amazon.SimpleNotificationService;
 using EMG.Common;
 //#endif
 using EMG.Extensions.AspNetCore;
-//#if (AddWcfDiscovery)
+//#if (AddDiscoveryAdapter)
 using EMG.Extensions.DependencyInjection.Discovery;
+using System.ServiceModel;
 //#endif
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -14,7 +15,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 //#if (AddNybus)
 using Nybus;
-using System.ServiceModel;
 //#endif
 
 namespace WebApiHost

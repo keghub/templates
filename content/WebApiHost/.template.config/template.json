@@ -40,7 +40,7 @@
             "defaultValue": "false",
             "description": "If specified, adds supports for NybusBridge"
         },
-        "AddWcfDiscovery": {
+        "AddDiscoveryAdapter": {
             "type": "parameter",
             "datatype": "bool",
             "defaultValue": "false",

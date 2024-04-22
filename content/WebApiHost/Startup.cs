@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 //#if (AddNybus)
 using Nybus;
+using System.ServiceModel;
 //#endif
 
 namespace WebApiHost
@@ -67,8 +68,16 @@ namespace WebApiHost
             //#endif
 
             //#if (AddDiscoveryAdapter)
-            services.ConfigureServiceDiscovery(Configuration.GetSection("Discovery"));
+            services.ConfigureServiceDiscovery(o =>
+            {
+                o.ConfigureDiscoveryAdapterBinding = binding =>
+                {
+                    binding.Security.Mode = SecurityMode.None;
+                };
+            });
             services.AddServiceDiscoveryAdapter();
+            services.AddBindingCustomization(binding => binding.Security.Mode = SecurityMode.None);
+
             //#endif
             //#if (AddNybusBridge || ConfigureAWS)
 

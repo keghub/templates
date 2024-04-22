@@ -68,21 +68,24 @@ namespace WebApiHost
             //#endif
 
             //#if (AddDiscoveryAdapter)
-            services.ConfigureServiceDiscovery(o =>
-            {
+            services.
+                ConfigureServiceDiscovery(Configuration.GetSection("Discovery")).
+                ConfigureServiceDiscovery(o =>
+                {
                 o.ConfigureDiscoveryAdapterBinding = binding =>
                 {
                     binding.Security.Mode = SecurityMode.None;
                 };
-            });
+                });
             services.AddServiceDiscoveryAdapter();
             services.AddBindingCustomization(binding => binding.Security.Mode = SecurityMode.None);
+            // To register a discoverable WCF service, uncomment the line below and replace 'IYourServiceContract' with the appropriate service interface:
+            // services.DiscoverServiceUsingAdapter<IYourServiceContract>();  
+        //#endif
+        //#if (AddNybusBridge || ConfigureAWS)
 
-            //#endif
-            //#if (AddNybusBridge || ConfigureAWS)
-
-            // Configures AWS using the configuration values
-            services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
+        // Configures AWS using the configuration values
+        services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
 //#endif
 //#if (AddNybusBridge)
             

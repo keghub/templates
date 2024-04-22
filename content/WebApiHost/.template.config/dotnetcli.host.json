@@ -13,7 +13,7 @@
             "longName": "nybus-bridge",
             "shortName": "nb"
         },
-        "AddWcfDiscovery": {
+        "AddDiscoveryAdapter": {
             "longName": "wcf-discovery",
             "shortName": "wcf"
         }

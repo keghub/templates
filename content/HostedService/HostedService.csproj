@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework Condition="'$(RequiresWindows)' == 'False' OR '$(RequiresWindows)' == ''">net6.0</TargetFramework>
+    <TargetFramework Condition="'$(RequiresWindows)' == 'False' OR '$(RequiresWindows)' == ''">net8.0</TargetFramework>
     <TargetFramework Condition="'$(RequiresWindows)' == 'True'">net48</TargetFramework>
     <LangVersion>latest</LangVersion>
     <RootNamespace>EMG.Hosted_Service</RootNamespace>
@@ -11,10 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.3.0" />
-    <PackageReference Include="Kralizek.Extensions.Logging" Version="2.0.1" />
-    <PackageReference Include="Kralizek.Extensions.Configuration.Objects" Version="2.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+    <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.4.0" />
+    <PackageReference Include="Kralizek.Extensions.Logging" Version="3.0.0" />
+    <PackageReference Include="Kralizek.Extensions.Configuration.Objects" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Nybus)' == 'Current'">

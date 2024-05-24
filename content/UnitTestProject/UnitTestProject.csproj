@@ -1,28 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-<!--#if (TargetFramework == 'netcore') -->
-    <TargetFramework>net6.0</TargetFramework>
-<!-- #elseif (TargetFramework == 'fx')
-    <TargetFramework>net48</TargetFramework>
-#elseif (TargetFramework == 'both')
-    <TargetFrameworks>netcoreapp3.1;net48</TargetFrameworks>
-#endif -->
-    <IsPackable>false</IsPackable>
-    <RootNamespace>Tests</RootNamespace>
-    <AssemblyName>UnitTestProject</AssemblyName>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
+	<PropertyGroup>
+		<!--#if (TargetFramework == 'netcore') -->
+		<TargetFramework>net8.0</TargetFramework>
+		<!-- #elseif (TargetFramework == 'fx')
+        <TargetFramework>net48</TargetFramework>
+        #elseif (TargetFramework == 'both')
+        <TargetFrameworks>net8.0;net48</TargetFrameworks>
+        #endif -->
+		<IsPackable>false</IsPackable>
+		<RootNamespace>Tests</RootNamespace>
+		<AssemblyName>UnitTestProject</AssemblyName>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AutoFixture" Version="4.18.0" />
-    <PackageReference Include="AutoFixture.AutoMoq" Version="4.18.0" />
-    <PackageReference Include="AutoFixture.Idioms" Version="4.18.0" />
-    <PackageReference Include="AutoFixture.NUnit3" Version="4.18.0" />
-    <PackageReference Include="Moq" Version="4.18.4" />
-    <PackageReference Include="nunit" Version="3.13.3" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.4.2" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoFixture.AutoMoq" Version="4.18.1" />
+		<PackageReference Include="AutoFixture.Idioms" Version="4.18.1" />
+		<PackageReference Include="AutoFixture.NUnit3" Version="4.18.1" />
+		<PackageReference Include="Moq" Version="4.18.4" />
+		<PackageReference Include="NUnit" Version="3.13.3" />
+		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+	</ItemGroup>
 
 </Project>

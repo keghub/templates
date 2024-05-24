@@ -1,49 +1,49 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
-    <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
-    <LangVersion>latest</LangVersion>
-    <RootNamespace>EMG</RootNamespace>
-    <AssemblyName>EMG.BatchJobProcessor</AssemblyName>
-	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
+		<LangVersion>latest</LangVersion>
+		<RootNamespace>EMG</RootNamespace>
+		<AssemblyName>EMG.BatchJobProcessor</AssemblyName>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
 
-  <ItemGroup>
-<!--#if (ConfigureAWS)-->
-    <PackageReference Include="AWSSDK.Core" Version="3.7.106.44" />
-    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.7" />
-<!--#endif-->
-<!--#if (AddLoggly)-->
-    <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.3.0" />
-<!--#endif-->
+	<ItemGroup>
+		<!--#if (ConfigureAWS)-->
+		<PackageReference Include="AWSSDK.Core" Version="3.7.304.4" />
+		<PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.300" />
+		<!--#endif-->
+		<!--#if (AddLoggly)-->
+		<PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.4.0" />
+		<!--#endif-->
 
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="6.0.0" />
-    <PackageReference Include="Kralizek.Extensions.Configuration.Objects" Version="2.0.1" />
-    
-    <PackageReference Include="Kralizek.Extensions.Logging" Version="2.0.1" />
-    <PackageReference Include="AWS.Logger.AspNetCore" Version="3.1.0" />
-    
-    <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="4.0.2" />
-  </ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="8.0.0" />
+		<PackageReference Include="Kralizek.Extensions.Configuration.Objects" Version="2.0.1" />
 
-  <ItemGroup>
-    <None Update="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="appsettings.*.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="hostsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+		<PackageReference Include="Kralizek.Extensions.Logging" Version="3.0.0" />
+		<PackageReference Include="AWS.Logger.AspNetCore" Version="3.5.3" />
+
+		<PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="4.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="appsettings.*.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="hostsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
 </Project>

@@ -50,11 +50,11 @@ namespace EMG
                 OptionalArgument = OptionalArgument
             };
 
-            logger.LogInformation(parameters, s => $"Starting job");
+            logger.LogInformation($"Starting job", parameters);
 
             await processor.ExecuteAsync(parameters).ConfigureAwait(false);
 
-            logger.LogInformation(parameters, s => $"Job complete");
+            logger.LogInformation($"Job complete", parameters);
 
             logglyProcessor.FlushMessages(); // flush the logs, to prevent losing logs due to buffering for short lived applications
         }

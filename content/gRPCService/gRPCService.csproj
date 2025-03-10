@@ -16,8 +16,15 @@
 		<PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.5.0" />
 		<PackageReference Include="EMG.Infrastructure.AppSecrets.Configuration.Extensions" Version="1.0.23" />
 		<PackageReference Include="Grpc.AspNetCore" Version="2.67.0" />
-		<PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.67.0" />
-		<PackageReference Include="Grpc.AspNetCore.Web" Version="2.67.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Update="appsettings.Development.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 
 </Project>

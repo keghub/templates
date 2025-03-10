@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "EMG.gRPCService";
+
+// The service definition.
+service ExampleService {
+  // Sends a message
+  rpc SendMessage (ExampleRequest) returns (ExampleResponse);
+}
+
+// The request message containing id and name.
+message ExampleRequest {
+  int32 id = 1;
+  string name = 2;
+}
+
+// The response message.
+message ExampleResponse {
+  string message = 1;
+}

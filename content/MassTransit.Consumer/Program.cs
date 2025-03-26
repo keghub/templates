@@ -36,6 +36,7 @@ builder.ConfigureServices((context, services) =>
 
     services.AddMassTransit(x =>
     {
+        //Register additional consumers/messages here
         x.AddConsumer<MessageConsumer<ExampleMessage>>();
 
         x.UsingRabbitMq((context, config) =>
@@ -48,8 +49,9 @@ builder.ConfigureServices((context, services) =>
             config.ConfigureEndpoints(context);
         });     
     });
-    services.AddTransient<IMessageHandler<ExampleMessage>, ExampleMessageHandler<ExampleMessage>>();
 
+    //Configure other services here
+    services.AddTransient<IMessageHandler<ExampleMessage>, ExampleMessageHandler<ExampleMessage>>();
 });
 
 builder.ConfigureLogging((context, logging) =>

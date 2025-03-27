@@ -18,6 +18,7 @@ The current version of the package contains the following templates.
 | Test Project                    | emg-test-lib               |
 | Windows Service                 | emg-windows-service        |
 | gRPC Service                    | emg-grpc-service           |
+| MassTransit Consumer            | emg-masstransit-consumer   |
 
 ### ASP.NET Core API
 
@@ -123,6 +124,15 @@ dotnet new emg-grpc-service
 
 This template creates a gRPC Server application with loggly support.
 
+### MassTransit Consumer
+
+```
+dotnet new emg-masstransit-consumer
+```
+
+This template creates a Hosted Service application in .NET8 with preconfigured RabbitMq and a purpose to receive messages.
+
+
 ## Installation
 
 You can install the templates in this package by running the following command:
@@ -158,6 +168,7 @@ Example:
       [EMG] ASP.NET Core API (emg-web-api) C#
       [EMG] Windows Service (emg-windows-service) C#
       [EMG] gRPC Service (emg-grpc-service) C#
+	  [EMG] MassTransit Consumer (emg-masstransit-consumer) C#
     Uninstall Command:
       dotnet new -u C:\Development\EMG\Templates\content
 ```

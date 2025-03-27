@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>EMG</RootNamespace>
+    <AssemblyName>EMG.MassTransit.Consumer</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Delfi.MassTransit.BusExtensions" Version="1.0.0" />
+    <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.4.0" />
+    <PackageReference Include="EMG.Infrastructure.AppSecrets.Configuration.Extensions" Version="1.0.27" />
+    <PackageReference Include="MassTransit" Version="8.3.7" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.3.7" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+  </ItemGroup>
+
+</Project>

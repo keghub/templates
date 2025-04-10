@@ -9,7 +9,7 @@
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/emgdev/templates</projectUrl>
     <repository type="git" url="https://github.com/emgdev/templates" />
-    <iconUrl>http://static.emg-services.net/masterpages/pics/logos/emg-icon-64.png</iconUrl>
+    <iconUrl>https://cdn-static.emg-services.net/masterpages/pics/logos/emg-icon-64.png</iconUrl>
     <description>Contains different templates to be used with dotnet-new</description>
     <tags>dotnet-standard dotnet-new template</tags>
     <packageTypes>

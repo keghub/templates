@@ -10,12 +10,30 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Delfi.MassTransit.BusExtensions" Version="1.0.0" />
+    <PackageReference Include="Delfi.MassTransit.BusExtensions" Version="1.1.0" />
     <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.4.0" />
     <PackageReference Include="EMG.Infrastructure.AppSecrets.Configuration.Extensions" Version="1.0.27" />
-    <PackageReference Include="MassTransit" Version="8.3.7" />
-    <PackageReference Include="MassTransit.RabbitMQ" Version="8.3.7" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Transport)' == 'RabbitMq'">
+    <PackageReference Include="MassTransit.RabbitMq" Version="8.3.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Transport)' == 'ActiveMq'">
+    <PackageReference Include="MassTransit.ActiveMQ" Version="8.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="hostsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

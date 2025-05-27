@@ -1,7 +1,8 @@
-﻿namespace MassTransit.Publisher.Handlers;
+﻿using MassTransit.Publisher.Messages;
 
-public class ExampleMessageHandler<ExampleMessage> : IMessageHandler<ExampleMessage>
-        where ExampleMessage : class
+namespace MassTransit.Publisher.Handlers;
+
+public class ExampleMessageHandler : IMessageHandler<ExampleMessage>
 {
     public Task HandleAsync(ExampleMessage message)
     {

@@ -57,7 +57,7 @@ builder.ConfigureServices((context, services) =>
 #endif
 
 #if (ActiveMq)
-    var activeMqConfigSection = context.Configuration.GetSection("ActiveMQ");
+    var activeMqConfigSection = context.Configuration.GetSection("ActiveMq");
     var activeMqConfig = new ActiveMqConsumerConfig();
 
     activeMqConfigSection.Bind(activeMqConfig);

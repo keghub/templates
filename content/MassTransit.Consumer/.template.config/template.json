@@ -34,7 +34,7 @@
           "description": "Adds support for RabbitMq"
         }
       ],
-      "description": "Select transport to use for MassTranist setup",
+      "description": "Select transport to use for MassTransit setup",
       "displayName": "MassTransit Transport",
       "isRequired": true
     },

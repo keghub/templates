@@ -1,5 +1,5 @@
-﻿using MassTransit;
-using MassTransit.BusFactory;
+﻿using Delfi.MassTransit.BusExtensions;
+using MassTransit;
 using MassTransit.Publisher.Consumers;
 using MassTransit.Publisher.Handlers;
 using MassTransit.Publisher.Messages;
@@ -32,26 +32,45 @@ builder.ConfigureServices((context, services) =>
 {
     services.AddHostedService<MassTransitHostedService>();
 
-    var rabbitMqConnection = RabbitMqConnectionDescriptor.Parse(context.Configuration.GetSection("RabbitMq").Value);
+#if (RabbitMq)
+    var rabbitMqConnection = RabbitMqConnectionDescriptor.Parse(context.Configuration.GetSection("RabbitMq").Value!);
 
     services.AddMassTransit(x =>
     {
         //Register additional consumers/messages here
         x.AddConsumer<MessageConsumer<ExampleMessage>>();
 
-        x.UsingRabbitMq((context, config) =>
+        x.UsingRabbitMq((ctx, config) =>
         {
             config.Host(rabbitMqConnection.Host, h =>
             {
                 h.Username(rabbitMqConnection.UserName);
                 h.Password(rabbitMqConnection.Password);
             });
-            config.ConfigureEndpoints(context);
+
+            config.ReceiveEndpoint("queue-name", e =>
+            {
+                e.ConfigureConsumer<MessageConsumer<ExampleMessage>>(ctx);
+            });
         });     
     });
+#endif
+
+#if (ActiveMq)
+    var activeMqConfigSection = context.Configuration.GetSection("ActiveMq");
+    var activeMqConfig = new ActiveMqConsumerConfig();
+
+    activeMqConfigSection.Bind(activeMqConfig);
+    
+    services.AddActiveMqBusConsumer(activeMqConfig, x =>
+    {
+        //Register additional consumers/messages here
+        x.AddConsumer<MessageConsumer<ExampleMessage>>();
+    });
+#endif
 
     //Configure other services here
-    services.AddTransient<IMessageHandler<ExampleMessage>, ExampleMessageHandler<ExampleMessage>>();
+    services.AddTransient<IMessageHandler<ExampleMessage>, ExampleMessageHandler>();
 });
 
 builder.ConfigureLogging((context, logging) =>

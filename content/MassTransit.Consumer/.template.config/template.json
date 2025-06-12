@@ -1,38 +1,62 @@
 {
-    "$schema": "http://json.schemastore.org/template",
-    "author": "EMG",
-    "classifications": [
-        "EMG",
-        "MassTransit",
-		"RabbitMq"
-    ],
-    "name": "[EMG] MassTransit Consumer",
-    "identity": "EMG.Templates.MassTransit.Consumer",
-    "groupIdentity": "EMG.Templates.MassTransit.Consumer.CSharp",
-    "shortName": "emg-masstransit-consumer",
-    "tags": {
-        "language": "C#",
-        "type": "project"
+  "$schema": "http://json.schemastore.org/template",
+  "author": "EMG",
+  "classifications": ["EMG", "MassTransit", "RabbitMq", "ActiveMq"],
+  "name": "[EMG] MassTransit Consumer",
+  "identity": "EMG.Templates.MassTransit.Consumer",
+  "groupIdentity": "EMG.Templates.MassTransit.Consumer.CSharp",
+  "shortName": "emg-masstransit-consumer",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "defaultName": "MassTransit.Consumer1",
+  "sourceName": "MassTransit.Consumer",
+  "guids": [],
+  "preferNameDirectory": true,
+  "primaryOutputs": [
+    {
+      "path": "MassTransit.Consumer.csproj"
+    }
+  ],
+  "symbols": {
+    "Transport": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "ActiveMq",
+      "choices": [
+        {
+          "choice": "ActiveMq",
+          "description": "Adds support for ActiveMq"
+        },
+        {
+          "choice": "RabbitMq",
+          "description": "Adds support for RabbitMq"
+        }
+      ],
+      "description": "Select transport to use for MassTransit setup",
+      "displayName": "MassTransit Transport",
+      "isRequired": true
     },
-    "defaultName": "MassTransit.Consumer1",
-    "sourceName": "MassTransit.Consumer",
-    "guids": [],
-    "preferNameDirectory": true,
-    "primaryOutputs": [
+    "ActiveMq": {
+      "type": "computed",
+      "value": "(Transport == \"ActiveMq\")"
+    },
+    "RabbitMq": {
+      "type": "computed",
+      "value": "(Transport == \"RabbitMq\")"
+    }
+  },
+  "postActions": [
+    {
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [
         {
-            "path": "MassTransit.Consumer.csproj"
+          "text": "Run 'dotnet restore'"
         }
-    ],
-    "postActions": [
-        {
-            "description": "Restore NuGet packages required by this project.",
-            "manualInstructions": [
-                {
-                    "text": "Run 'dotnet restore'"
-                }
-            ],
-            "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
-            "continueOnError": true
-        }
-    ]
+      ],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ]
 }

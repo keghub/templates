@@ -1,10 +1,8 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using EMG.Extensions.Logging.Loggly;
-using Kralizek.Lambda;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
 
 namespace EMG
 {

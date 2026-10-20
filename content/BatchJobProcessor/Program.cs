@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using EMG.Extensions.Logging.Loggly;
+﻿using EMG.Extensions.Logging.Loggly;
 using McMaster.Extensions.CommandLineUtils;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EMG
 {
@@ -81,16 +80,19 @@ namespace EMG
             var builder = new ConfigurationBuilder();
             builder.AddConfiguration(hostingConfiguration);
             builder.SetBasePath(AppDomain.CurrentDomain.BaseDirectory);
-            builder.AddObject(new
+
+            //#if (AddLoggly)
+
+            var logglyConfigValues = new Dictionary<string, string?>
             {
-                //#if (AddLoggly)
-                Loggly = new
-                {
-                    ApplicationName = "EMG EventLambdaFunction",
-                    ApiKey = "test"
-                }
-                //#endif
-            });
+                ["Loggly:ApplicationName"] = "EMG BatchJobProcessor",
+                ["Loggly:ApiKey"] = "test"
+            };
+
+            builder.AddInMemoryCollection(logglyConfigValues);
+
+            //#endif
+
             builder.AddJsonFile("appsettings.json", true, false);
             builder.AddJsonFile($"appsettings.{environmentName}.json", true, false);
             builder.AddEnvironmentVariables();
@@ -122,8 +124,5 @@ namespace EMG
             services.AddDefaultAWSOptions(configuration.GetAWSOptions());
             //#endif
         }
-
     }
-
-
 }

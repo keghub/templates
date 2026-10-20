@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 #if (WCF)
 using System.ServiceModel;
@@ -46,18 +45,12 @@ namespace EMG.Hosted_Service
 
         private static void ConfigureApplication(HostBuilderContext context, IConfigurationBuilder configuration)
         {
-            configuration.AddObject(new
+            configuration.AddInMemoryCollection(new Dictionary<string, string>
             {
 #if (NybusLegacy)
-                ConnectionStrings = new
-                {
-                    ServiceBus = "host=rabbitmq://localhost/;username=guest;password=guest"
-                },
+                { "ConnectionStrings:ServiceBus", "host=rabbitmq://localhost/;username=guest;password=guest" },
 #endif
-                Loggly = new
-                {
-                    ApplicationName = "EMG.Hosted_Service"
-                }
+                { "Loggly:ApplicationName", "EMG.Hosted_Service" }
             });
         }
 

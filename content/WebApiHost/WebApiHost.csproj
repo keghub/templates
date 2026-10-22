@@ -7,11 +7,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="EMG.AspNetCore.Authentication.JWT" Version="2.0.0" />
-		<PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.4.0" />
-		<PackageReference Include="Kralizek.Extensions.Logging" Version="3.0.0" />
+		<PackageReference Include="EMG.AspNetCore.Authentication.JWT" Version="3.1.0" />
+		<PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.6.0" />
 		<!--#if (AddDiscoveryAdapter) -->
-		<PackageReference Include="EMG.Extensions.DependencyInjection.ServiceModel.DiscoveryAdapter" Version="1.4.0" />
+		<PackageReference Include="EMG.Extensions.DependencyInjection.ServiceModel.DiscoveryAdapter" Version="1.6.0" />
 		<!--#endif-->
 		<!--#if (AddNybus) -->
 		<PackageReference Include="Nybus.Engine.RabbitMq" Version="1.6.0" />
@@ -19,10 +18,10 @@
 		<PackageReference Include="Nybus.Extensions.Hosting.HostedService" Version="1.6.0" />
 		<!--#endif -->
 		<!--#if (AddNybusBridge || ConfigureAWS) -->
-		<PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.300" />
+		<PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.102.4" />
 		<!--#endif-->
 		<!--#if (AddNybusBridge)-->
-		<PackageReference Include="EMG.Common.Framework.NybusBridge" Version="2.4.23" />
+		<PackageReference Include="EMG.Common.Framework.NybusBridge" Version="2.4.34" />
 		<!--#endif -->
 	</ItemGroup>
 

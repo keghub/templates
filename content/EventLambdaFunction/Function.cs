@@ -1,39 +1,63 @@
-using System.Collections.Generic;
-using System.IO;
 using Amazon.Lambda.Core;
-using Kralizek.Lambda;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
+using System.IO;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 
 namespace EMG
 {
-    public class Function : EventFunction<string>
+    public class Function
     {
-        protected override void Configure(IConfigurationBuilder builder)
+        private readonly IServiceProvider _serviceProvider;
+
+        public Function()
+        {
+            var builder = new ConfigurationBuilder();
+            Configure(builder);
+            var configuration = builder.Build();
+
+            var services = new ServiceCollection();
+            services.AddSingleton<IConfiguration>(configuration);
+            services.AddLogging(logging => ConfigureLogging(logging, configuration));
+            ConfigureServices(services, configuration);
+
+            _serviceProvider = services.BuildServiceProvider();
+        }
+
+        public async Task FunctionHandlerAsync(JsonElement input, ILambdaContext context)
+        {
+            using var scope = _serviceProvider.CreateScope();
+            var handler = scope.ServiceProvider.GetRequiredService<IEventHandler<JsonElement>>();
+            await handler.HandleAsync(input, context);
+        }
+
+        private static void Configure(IConfigurationBuilder builder)
         {
             builder.SetBasePath(Directory.GetCurrentDirectory());
             builder.AddJsonFile("appsettings.json", true, false);
             builder.AddEnvironmentVariables();
         }
 
-        protected override void ConfigureLogging(ILoggingBuilder logging, IExecutionEnvironment executionEnvironment)
+        private static void ConfigureLogging(ILoggingBuilder logging, IConfiguration configuration)
         {
-            logging.AddConfiguration(Configuration.GetSection("Logging"));
-            logging.AddLambdaLogger(Configuration, "Logging");
-            logging.AddLoggly(Configuration.GetSection("Loggly"));
+            logging.AddConfiguration(configuration.GetSection("Logging"));
+            logging.AddLambdaLogger(configuration, "Logging");
+            logging.AddLoggly(configuration.GetSection("Loggly"));
         }
 
-        protected override void ConfigureServices(IServiceCollection services, IExecutionEnvironment executionEnvironment)
+        private static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             // You need this line to register your handler
-            RegisterHandler<StringEventHandler>(services);
+            services.AddTransient<IEventHandler<JsonElement>, JsonEventHandler>();
 
             // Use this method to register your services. Exactly like in ASP.NET Core
             //#if (ConfigureAWS)
-            services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
+            services.AddDefaultAWSOptions(configuration.GetAWSOptions());
             //#endif
         }
     }

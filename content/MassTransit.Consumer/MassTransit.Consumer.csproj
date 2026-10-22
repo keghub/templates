@@ -10,10 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Delfi.MassTransit.BusExtensions" Version="1.1.0" />
-    <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.4.0" />
-    <PackageReference Include="EMG.Infrastructure.AppSecrets.Configuration.Extensions" Version="1.0.27" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.10" />
+    <PackageReference Include="Delfi.MassTransit.BusExtensions" Version="1.2.4" />
+    <PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.6.0" />
+    <PackageReference Include="EMG.Infrastructure.AppSecrets.Configuration.Extensions" Version="1.0.68" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.13" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Transport)' == 'RabbitMq'">

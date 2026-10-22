@@ -11,19 +11,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Amazon.Lambda.Logging.AspNetCore" Version="3.1.0" />
+		<PackageReference Include="Amazon.Lambda.Logging.AspNetCore" Version="5.1.0" />
 		<!--#if (ConfigureAWS)-->
-		<PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.300" />
+		<PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.102.4" />
 		<!--#endif-->
 		<!--#if (AddLoggly)-->
-		<PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.4.0" />
+		<PackageReference Include="EMG.Extensions.Logging.Loggly" Version="1.6.0" />
 		<!--#endif-->
-		<PackageReference Include="Kralizek.Extensions.Logging" Version="3.0.0" />
-		<PackageReference Include="Kralizek.Lambda.Template" Version="5.0.0" />
-		<PackageReference Include="Kralizek.Extensions.Configuration.Objects" Version="3.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.10" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.10" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="10.0.10" />
+		<PackageReference Include="Amazon.Lambda.Core" Version="3.4.0" />
+		<PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="3.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.13" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.13" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.13" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="10.0.13" />
 	</ItemGroup>
 
 	<ItemGroup>
